@@ -57,6 +57,7 @@
                 if (isset($_GET['cek'])) {
                     include "../connection.php";
                     $query = mysqli_query($koneksi, "SELECT  FROM pendaftaran p ");
+                }
             ?>
             <div class="row clearfix">
                 <!-- Task Info -->
