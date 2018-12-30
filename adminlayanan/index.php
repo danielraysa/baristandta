@@ -27,7 +27,7 @@
                            
                         </div>
                         <div class="body">
-                            <form class="form-horizontal" method="post" action="">
+                            <form class="form-horizontal" method="post">
                                 <div class="row">
                                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 form-control-label">
                                         <label for="email_address_2">ID Pendaftaran</label>
@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
                                         <div class="form-group">
-                                            <button type="submit" name="cek" class="btn btn-success waves-effect">Cek Sertifikasi</button>
+                                            <button type="button" name="cek" class="btn btn-success waves-effect cekbutton">Cek Sertifikasi</button>
                                         </div>
                                     </div>
                                 </div>
@@ -53,12 +53,6 @@
                 
             </div>
 
-            <?php
-                if (isset($_GET['cek'])) {
-                    include "../connection.php";
-                    $query = mysqli_query($koneksi, "SELECT  FROM pendaftaran p ");
-                }
-            ?>
             <div class="row clearfix">
                 <!-- Task Info -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -75,7 +69,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" id="email_address_2" class="form-control" placeholder="">
+                                                <input type="text" id="layanan" class="form-control" placeholder="">
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +81,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" id="password_2" class="form-control" placeholder="">
+                                                <input type="text" id="nama_perusahaan" class="form-control" placeholder="">
                                             </div>
                                         </div>
                                     </div>
@@ -99,7 +93,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" id="password_3" class="form-control" placeholder="">
+                                                <input type="text" id="status" class="form-control" placeholder="">
                                             </div>
                                         </div>
                                     </div>

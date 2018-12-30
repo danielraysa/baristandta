@@ -61,7 +61,33 @@
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
-    
+    <script>
+    $('.cekbutton').click(function(e){
+        var id = $('#id_pendaftaran').val();
+        e.preventDefault(); 
+        $.ajax({
+            url:"ajax.php",
+            type:"GET",
+            data : "id="+id,
+            success : function(result) {
+                //alert(result);
+                var datanew = JSON.parse(result);
+                if (datanew.hasil === true) {
+                    $('#hasil1').val(datanew.asal);
+                    $('#hasil2').val(datanew.nama);
+                    $('#hasil3').val(datanew.jenis);
+                    $('#hasil1').prop('disabled', true);
+                    $('#hasil2').prop('disabled', true);
+                    $('#hasil3').prop('disabled', true);
+                }
+                else {
+                    alert("No data!");
+                    $('$id_pendaftaran').val("");
+                }
+            }
+            });
+        });
+    </script>
     <script>
         $('#logoutButton').on('click', function (event) {
             event.preventDefault();

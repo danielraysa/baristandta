@@ -44,15 +44,18 @@
                         <div class="body">
                             <form method="post" action="form-action.php">
                                 <div class="row">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-3 form-control-label">
                                         <label for="email_address_2">ID Pendaftaran</label>
                                     </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="col-lg-7 col-md-7 col-sm-6 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="id_pendaftaran" id="email_address_2" class="form-control" placeholder="ID Pendaftaran">
+                                                <input type="text" name="id_pendaftaran" id="id_pendaftaran" class="form-control" placeholder="ID Pendaftaran">
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
+                                        <button type="button" class="btn btn-success btn-block cekbutton" name="cek">Cek ID Pendaftaran</button>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -67,6 +70,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label for="email_address_2">Nama Perusahaan</label>
@@ -74,7 +78,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="nama_perusahaan" id="email_address_2" class="form-control" placeholder="Nama Perusahaan">
+                                                <input type="text" name="nama_perusahaan" id="hasil1" class="form-control" placeholder="Nama Perusahaan">
                                             </div>
                                         </div>
                                     </div>
@@ -86,7 +90,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="nama_produk" id="email_address_2" class="form-control" placeholder="Nama Produk">
+                                                <input type="text" name="nama_produk" id="hasil2" class="form-control" placeholder="Nama Produk">
                                             </div>
                                         </div>
                                     </div>
@@ -98,11 +102,12 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="jenis_produk" id="email_address_2" class="form-control" placeholder="Jenis Produk">
+                                                <input type="text" name="jenis_produk" id="hasil3" class="form-control" placeholder="Jenis Produk">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label for="email_address_2">Nama Pengunjung</label>
@@ -129,5 +134,5 @@
             </div>
         </div>
     </section>
-
+    
     <?php include "footer.php"; ?>

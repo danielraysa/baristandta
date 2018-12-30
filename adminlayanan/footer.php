@@ -58,6 +58,34 @@
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
     <script>
+    $('.cekbutton').click(function(e){
+        var id = $('#id_pendaftaran').val();
+        e.preventDefault(); 
+        $.ajax({
+            url:"ajax.php",
+            type:"GET",
+            data : "id="+id,
+            success : function(result) {
+                //alert(result);
+                var datanew = JSON.parse(result);
+                if (datanew.hasil === true) {
+                    $('#layanan').val(datanew.layanan);
+                    $('#nama_perusahaan').val(datanew.nama);
+                    $('#status').val(datanew.status);
+                    $('#layanan').prop('disabled', true);
+                    $('#nama_perusahaan').prop('disabled', true);
+                    $('#status').prop('disabled', true);
+                }
+                else {
+                    alert("No data!");
+                    $('$id_pendaftaran').val("");
+                }
+            }
+            });
+        });
+
+    </script>
+    <script>
         $('#logoutButton').on('click', function (event) {
             event.preventDefault();
             var that = this;

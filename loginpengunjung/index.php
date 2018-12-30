@@ -15,7 +15,7 @@
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="../report/LOGO KEMENPRN.jpg" id="icon" alt="User Icon" />
+      <img src="../report/LOGOKEMENPRN.jpg" id="icon" alt="User Icon" />
     </div>
 <BR>
 
@@ -30,7 +30,11 @@
     <form id="register-form" method="post" action="register-action.php" role="form" style="display: none;">
       <input type="text" class="fadeIn second" name="namaproduk" placeholder="Nama Produk">
       <BR>
-      <input type="text" class="fadeIn second" name="jenisproduk" placeholder="Jenis Produk">
+      <select class="fadeIn second" name="jenisproduk">
+      <option value="">Jenis Produk</option>
+        <option value="Makanan/Minuman">Makanan/Minuman</option>
+        <option value="Non Makanan/Minuman">Non Makanan/Minuman</option>
+      </select>
       <BR>
       <input type="text" class="fadeIn second" name="namaperusahaan" placeholder="Nama Perusahaan">
       <BR>

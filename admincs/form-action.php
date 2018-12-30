@@ -1,9 +1,11 @@
 <?php
-
-    if ($_POST['id_pendaftaran'] != "") {
+    //session_start();
+    include "../connection.php";
+    
+    try {    
         header("location: ../admincs/?success");
     }
-    else {
+    catch (Exception $e) {
         header("location: ../admincs/?error");
     }
 ?>
