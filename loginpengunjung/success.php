@@ -15,7 +15,7 @@
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="../report/LOGO KEMENPRN.jpg" id="icon" alt="User Icon" />
+      <img src="../report/LOGOKEMENPRN.jpg" id="icon" alt="User Icon" />
     </div>
 <BR>
 

@@ -1,4 +1,5 @@
-﻿<?php include "header.php"; ?>
+﻿<?php $filename = basename(__FILE__); ?>
+<?php include "header.php"; ?>
     <?php include "navbar.php"; ?>
     <?php include "sidebar.php"; ?>
 

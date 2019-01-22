@@ -62,6 +62,11 @@
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
     <script>
+        $(':radio').change(function() {
+            console.log('New star rating: ' + this.value);
+        });
+    </script>
+    <script>
     $('.cekbutton').click(function(e){
         var id = $('#id_pendaftaran').val();
         e.preventDefault(); 
@@ -70,15 +75,15 @@
             type:"GET",
             data : "id="+id,
             success : function(result) {
-                //alert(result);
+                console.log(result);
                 var datanew = JSON.parse(result);
                 if (datanew.hasil === true) {
                     $('#hasil1').val(datanew.asal);
                     $('#hasil2').val(datanew.nama);
                     $('#hasil3').val(datanew.jenis);
-                    $('#hasil1').prop('disabled', true);
-                    $('#hasil2').prop('disabled', true);
-                    $('#hasil3').prop('disabled', true);
+                    //$('#hasil1').prop('disabled', true);
+                    //$('#hasil2').prop('disabled', true);
+                    //$('#hasil3').prop('disabled', true);
                 }
                 else {
                     alert("No data!");
@@ -88,6 +93,21 @@
             });
         });
     </script>
+    <script>
+	$('.modalLink').click(function(){
+		var id = $(this).attr('data-id');
+		console.log(id);
+		$.ajax({
+			url:"modal-update.php",
+			cache:false,
+			type: "GET",
+			data: "ID="+id,
+			success:function(data){
+				$(".modal-content").html(data);
+			}
+		});
+	});
+	</script>
     <script>
         $('#logoutButton').on('click', function (event) {
             event.preventDefault();

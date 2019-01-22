@@ -1,4 +1,5 @@
-﻿    <?php include "header.php"; ?>
+﻿    <?php $filename = basename(__FILE__); ?>
+    <?php include "header.php"; ?>
     <?php include "navbar.php"; ?>
     <?php include "sidebar.php"; ?>
 
@@ -35,7 +36,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-5">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="id_pendaftaran" id="password_3" class="form-control" placeholder="tuliskan id pendaftaran disini..">
+                                                <input type="text" name="id_pendaftaran" id="id_pendaftaran" class="form-control" placeholder="tuliskan id pendaftaran disini..">
                                             </div>
                                         </div>
                                     </div>

@@ -58,6 +58,32 @@
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
     <script>
+    $('.cekdaftar').click(function(e){
+        var id = $('#id_pendaftaran').val();
+        e.preventDefault(); 
+        $.ajax({
+            url:"ajax.php",
+            type:"GET",
+            data : "id="+id,
+            success : function(result) {
+                //alert(result);
+                console.log(result);
+                var datanew = JSON.parse(result);
+                if (datanew.hasil === false) {
+                    alert("No data!");
+                }
+                $('#nama_produk').val(datanew.nama);
+                $('#jenis_produk').val(datanew.jenis);
+                //$('select>option:eq(1)').attr('selected', true);
+                $('#nama_layanan').val(datanew.layanan);
+                $('#nama_perusahaan').val(datanew.perusahaan);
+                $('#jml_bayar').val(datanew.bayar);
+                //$('#nama_perusahaan').prop('disabled', true);
+            }
+        });
+    });
+    </script>
+    <script>
         $('#logoutButton').on('click', function (event) {
             event.preventDefault();
             var that = this;

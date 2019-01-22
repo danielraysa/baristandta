@@ -1,4 +1,5 @@
-﻿    <?php include "header.php"; ?>
+﻿<?php $filename = basename(__FILE__); ?>
+    <?php include "header.php"; ?>
     <?php include "navbar.php"; ?>
     <?php include "sidebar.php"; ?>
 
@@ -31,7 +32,7 @@
             ?>
             <div class="alert bg-red alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                id produk salah / tidak terdaftar
+                <b>Error!</b> <?php echo $_SESSION['error-msg']; ?>
             </div>
             <?php
                 }
@@ -50,7 +51,7 @@
                                     <div class="col-lg-7 col-md-7 col-sm-6 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="id_pendaftaran" id="id_pendaftaran" class="form-control" placeholder="ID Pendaftaran">
+                                                <input type="text" name="id_pendaftaran" id="id_pendaftaran" class="form-control" placeholder="ID Pendaftaran" required>
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +66,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="tanggal_penyerahan" id="email_address_2" class="form-control datepicker" placeholder="Tanggal Penyerahan">
+                                                <input type="text" name="tanggal_penyerahan" id="email_address_2" class="form-control datepicker" placeholder="Tanggal Penyerahan" required>
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +79,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="nama_perusahaan" id="hasil1" class="form-control" placeholder="Nama Perusahaan">
+                                                <input type="text" name="nama_perusahaan" id="hasil1" class="form-control" placeholder="Nama Perusahaan" required>
                                             </div>
                                         </div>
                                     </div>
@@ -90,7 +91,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="nama_produk" id="hasil2" class="form-control" placeholder="Nama Produk">
+                                                <input type="text" name="nama_produk" id="hasil2" class="form-control" placeholder="Nama Produk" required>
                                             </div>
                                         </div>
                                     </div>
@@ -107,7 +108,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                
                                 <div class="row">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label for="email_address_2">Nama Pengunjung</label>
@@ -115,7 +116,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="nama_pengunjung" id="email_address_2" class="form-control" placeholder="Nama Pengunjung">
+                                                <input type="text" name="nama_pengunjung" id="email_address_2" class="form-control" placeholder="Nama Pengunjung" required>
                                             </div>
                                         </div>
                                     </div>

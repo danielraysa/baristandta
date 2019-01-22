@@ -29,19 +29,52 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">PILIHAN LAYANAN</li>
+                    <?php
+                    if ($filename == 'index.php') {
+                        ?>
                     <li class="active">
+                    <?php
+                    }
+                    else {
+                    ?>
+                    <li class="">
+                    <?php
+                    }
+                    ?>
                         <a href="index.php">
                             <i class="material-icons">text_fields</i>
                             <span>Pengecekan Layanan Sertifikasi</span>
                         </a>
                     </li>
-                    <li>
+                    <?php
+                    if ($filename == 'index.1.php') {
+                        ?>
+                    <li class="active">
+                    <?php
+                    }
+                    else {
+                    ?>
+                    <li class="">
+                    <?php
+                    }
+                    ?>
                         <a href="index.1.php">
                             <i class="material-icons">text_fields</i>
                             <span>Pendaftaran Layanan Sertifikasi</span>
                         </a>
                     </li>
-                    <li>
+                    <?php
+                    if ($filename == 'index.2.php') {
+                        ?>
+                    <li class="active">
+                    <?php
+                    }
+                    else {
+                    ?>
+                    <li class="">
+                    <?php
+                    }
+                    ?>
                         <a href="index.2.php">
                             <i class="material-icons">lock</i>
                             <span>Laporan Layanan Sertifikasi</span>

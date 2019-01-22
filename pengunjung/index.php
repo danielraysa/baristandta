@@ -20,7 +20,7 @@
             <!-- Widgets -->
             <div class="row clearfix">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box-3 hover-expand-effect">
+                    <div class="info-box-3 <?php if ($_SESSION['status_tahapan'] == "Tahap 1") echo "bg-teal"; ?> hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">android</i>
                         </div>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box-3 bg-teal hover-expand-effect">
+                    <div class="info-box-3 <?php if ($_SESSION['status_tahapan'] == "Tahap 2") echo "bg-teal"; ?> hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">forum</i>
                         </div>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box-3 hover-expand-effect">
+                    <div class="info-box-3 <?php if ($_SESSION['status_tahapan'] == "Tahap 3") echo "bg-teal"; ?> hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">devices</i>
                         </div>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box-3 hover-expand-effect">
+                        <div class="info-box-3 <?php if ($_SESSION['status_tahapan'] == "Tahap 4") echo "bg-teal"; ?> hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons">playlist_add_check</i>
                             </div>

@@ -1,4 +1,5 @@
-﻿<?php include "header.php"; ?>
+﻿    <?php $filename = basename(__FILE__); ?>
+    <?php include "header.php"; ?>
     <?php include "navbar.php"; ?>
     <?php include "sidebar.php"; ?>
 
@@ -18,16 +19,48 @@
                     </div>
                 </div>
             </div> -->
-
+            <?php 
+                if (isset($_GET['success'])) {
+            ?>
+            <div class="alert bg-green alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <b>Success!</b> Data berhasil ditambahkan
+            </div>
+            <?php
+                }
+                if (isset($_GET['error'])) {
+            ?>
+            <div class="alert bg-red alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <b>Error!</b> <?php echo $_SESSION['error-msg']; ?>
+            </div>
+            <?php
+                }
+            ?>
             <div class="row clearfix">
                 <!-- Task Info -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
                         <div class="header">
-                           
+                           <b>Pendaftaran Sertifikasi</b>
                         </div>
                         <div class="body">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" method="post" action="form-action.php">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-3 form-control-label">
+                                        <label for="email_address_2">ID Pendaftaran</label>
+                                    </div>
+                                    <div class="col-lg-7 col-md-7 col-sm-6 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="id_pendaftaran" id="id_pendaftaran" class="form-control" placeholder="ID Pendaftaran">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
+                                        <button type="button" class="btn btn-success btn-block cekdaftar" name="cek">Cek ID Pendaftaran</button>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label for="email_address_2">Asal Perusahaan</label>
@@ -35,7 +68,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" id="email_address_2" class="form-control" placeholder="">
+                                                <input type="text" name="nama_perusahaan" id="nama_perusahaan" class="form-control" placeholder="">
                                             </div>
                                         </div>
                                     </div>
@@ -47,7 +80,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" id="password_2" class="form-control" placeholder="">
+                                                <input type="text" name="nama_pengunjung" id="namapengunjung" class="form-control" placeholder="">
                                             </div>
                                         </div>
                                     </div>
@@ -59,7 +92,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" id="password_3" class="form-control" placeholder="">
+                                                <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="">
                                             </div>
                                         </div>
                                     </div>
@@ -69,19 +102,39 @@
                                         <label for="password_4">Layanan Sertifikasi</label>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <select class="form-control show-tick">
+                                        <select name="layanan_sertifikasi" id="nama_layanan" class="form-control show-tick" onchange="jenisLayanan()">
                                             <option value="">-- Pilih Layanan Sertifikasi --</option>
-                                            <option value="10">10</option>
-                                            <option value="20">20</option>
-                                            <option value="30">30</option>
-                                            <option value="40">40</option>
-                                            <option value="50">50</option>
+                                            <?php
+                                            $query = mysqli_query($koneksi, "SELECT * FROM layanan");
+                                            while ($row = mysqli_fetch_array($query)) {
+                                            ?>
+                                            <option value="<?php echo $row['id_layanan']; ?>"><?php echo $row['nama_layanan']; ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                            <!--<option value="Sertifikasi Non Makanan/Minuman">Sertifikasi Non Makanan/Minuman</option>-->
                                         </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 form-control-label">
+                                        <label for="password_3">Masa Expired</label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="number" name="expired" id="expired" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1 col-md-2 col-sm-3 col-xs-2 form-control-label">
+                                        <center><label for="password_3">hari</label></center>
                                     </div>
                                 </div>
                                 <center>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success waves-effect">Simpan Layanan Sertifikasi</button>
+                                    <button type="submit" name="daftar" class="btn btn-success waves-effect">Simpan Layanan Sertifikasi</button>
                                 </div>
                                 </center>
                             </form>

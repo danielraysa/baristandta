@@ -58,17 +58,20 @@
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
     <script>
-    $('.cekbutton').click(function(e){
+        $('.cekbutton').click(function(e){
         var id = $('#id_pendaftaran').val();
-        e.preventDefault(); 
-        $.ajax({
-            url:"ajax.php",
-            type:"GET",
-            data : "id="+id,
-            success : function(result) {
-                //alert(result);
-                var datanew = JSON.parse(result);
-                if (datanew.hasil === true) {
+            e.preventDefault(); 
+            $.ajax({
+                url:"ajax.php",
+                type:"GET",
+                data : "id="+id,
+                success : function(result) {
+                    //alert(result);
+                    console.log(result);
+                    var datanew = JSON.parse(result);
+                    if (datanew.hasil === false) {
+                        alert("No data!");
+                    }
                     $('#layanan').val(datanew.layanan);
                     $('#nama_perusahaan').val(datanew.nama);
                     $('#status').val(datanew.status);
@@ -76,15 +79,53 @@
                     $('#nama_perusahaan').prop('disabled', true);
                     $('#status').prop('disabled', true);
                 }
-                else {
-                    alert("No data!");
-                    $('$id_pendaftaran').val("");
-                }
-            }
             });
         });
-
+        $('.cekdaftar').click(function(e){
+        var id = $('#id_pendaftaran').val();
+            e.preventDefault(); 
+            $.ajax({
+                url:"ajax.php",
+                type:"GET",
+                data : "id_daftar="+id,
+                success : function(result) {
+                    //alert(result);
+                    console.log(result);
+                    var datanew = JSON.parse(result);
+                    if (datanew.hasil === false) {
+                        alert("No data!");
+                    }
+                    $('#namapengunjung').val(datanew.nama);
+                    $('#nama_perusahaan').val(datanew.perusahaan);
+                    //$('#nama_perusahaan').prop('disabled', true);
+                }
+            });
+        });
     </script>
+    <script>
+    function jenisLayanan() {
+        var a = $('#nama_layanan').val();
+        console.log(a);
+        if(a == "") { 
+            alert("Pilih jenis sertifikasi")
+        }
+    }
+    </script>
+    <script>
+	$('.modalLink').click(function(){
+		var id = $(this).attr('data-id');
+		console.log(id);
+		$.ajax({
+			url:"modal-update.php",
+			cache:false,
+			type: "GET",
+			data: "ID="+id,
+			success:function(data){
+				$(".modal-content").html(data);
+			}
+		});
+	});
+	</script>
     <script>
         $('#logoutButton').on('click', function (event) {
             event.preventDefault();

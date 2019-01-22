@@ -1,4 +1,5 @@
-﻿    <?php include "header.php"; ?>
+﻿<?php $filename = basename(__FILE__); ?>
+    <?php include "header.php"; ?>
     <?php include "navbar.php"; ?>
     <?php include "sidebar.php"; ?>
 
@@ -18,7 +19,24 @@
                     </div>
                 </div>
             </div> -->
-
+            <?php 
+                if (isset($_GET['success'])) {
+            ?>
+            <div class="alert bg-green alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <b>Success!</b> Data berhasil diperbarui
+            </div>
+            <?php
+                }
+                if (isset($_GET['error'])) {
+            ?>
+            <div class="alert bg-red alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <b>Error!</b> <?php echo $_SESSION['error-msg']; ?>
+            </div>
+            <?php
+                }
+            ?>
             <div class="row clearfix">
                 <!-- Task Info -->
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-12">
@@ -53,25 +71,22 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    <?php
+                                        $query = mysqli_query($koneksi, "SELECT p.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, p.tanggal_penyerahan, p1.nama_pengunjung FROM pendaftaran p JOIN pengunjung p1 ON p.id_pendaftaran = p1.id_pengunjung WHERE p.tanggal_penyerahan != '0000-00-00'");
+                                        while ($row = mysqli_fetch_array($query)) {
+                                    ?>
                                         <tr>
-                                            <td>B01MA2018</td>
-                                            <td>PT. CITRA SIGAR </td>
-                                            <td>NATAGEL COCHO</td>
-                                            <td>MAKANAN</td>
-                                            <td>07/08/2017</td>
-                                            <td>REGITA</td>
-                                            <td><button class="btn btn-success waves-effect">Update</button></td>
+                                            <td><?php echo $row['id_pendaftaran']; ?></td>
+                                            <td><?php echo $row['asal_perusahaan']; ?></td>
+                                            <td><?php echo $row['nama_produk']; ?></td>
+                                            <td><?php echo $row['jenis_produk']; ?></td>
+                                            <td><?php echo $row['tanggal_penyerahan']; ?></td>
+                                            <td><?php echo $row['nama_pengunjung']; ?></td>
+                                            <td><button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" >Update</button></td>
                                         </tr>
-                                        <tr>
-                                            <td>B02MI2018</td>
-                                            <td>PT. MILENIAL </td>
-                                            <td>ES PUDING</td>
-                                            <td>MINUMAN</td>
-                                            <td>09/08/2017</td>
-                                            <td>PUTRI</td>
-                                            <td><button class="btn btn-success waves-effect">Update</button></td>
-                                        </tr>
-                                       
+                                        <?php
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -80,7 +95,14 @@
                     </div>
                 </div>
                 <!-- #END# Task Info -->
-                
+                <!-- Modal Update -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

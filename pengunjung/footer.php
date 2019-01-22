@@ -62,7 +62,7 @@
                     timer: 2000,
                     showConfirmButton: false
                 });
-                window.location = "logout.php";
+                window.location = "../logout.php";
             });
         });
     </script>
