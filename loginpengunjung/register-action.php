@@ -1,4 +1,5 @@
 <?php
+    session_start();
     date_default_timezone_set("Asia/Jakarta");
     include "../connection.php";
 
@@ -30,9 +31,9 @@
                 $result = mysqli_query($koneksi, "SELECT id_pendaftaran FROM pendaftaran WHERE id_pendaftaran = '".$random_string."' LIMIT 1");
                 if (mysqli_num_rows($result) == 0) {  // if you don't get a result, then you're good
                     $is_unique = true;
-                    echo "success";
                     $query = mysqli_query($koneksi, "INSERT INTO pendaftaran (id_pendaftaran, jenis_produk, nama_produk, tanggal_pendaftaran) VALUES ('".$random_string."', '".$jenisproduk."', '".$namaproduk."', '".$date."')");
                     $query1 = mysqli_query($koneksi, "INSERT INTO pengunjung (id_pengunjung, asal_perusahaan) VALUES ('".$random_string."', '".$namaperusahaan."')");
+                    $_SESSION['temp_id'] = $random_string;
                     header("location: success.php");
                 }
                 else {                     // if you DO get a result, keep trying
@@ -41,7 +42,6 @@
             }
         }
     }
-  
     //catch exception
     catch(Exception $e) {
         echo 'Message: ' .$e->getMessage();

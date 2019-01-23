@@ -77,7 +77,7 @@ $fet = mysqli_fetch_array($qu);
         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
             
                 <select name="status_sertifikasi" class="bootstrap-select form-control show-tick">
-                    <option value="Tahap 1">Pengumpulan uji produk</option>
+                    <option value="Tahap 1">Pengumpulan Uji Produk</option>
                     <?php
                     if ($fet['id_layanan'] == "LYN001") {
                     ?>
@@ -87,7 +87,7 @@ $fet = mysqli_fetch_array($qu);
                     }
                     if ($fet['id_layanan'] == "LYN002") {
                     ?>
-                    <option value="Tahap 2">Laboratorium Teknis Pengujian dan Kalibrasi </option>
+                    <option value="Tahap 2">Laboratorium Teknis Pengujian dan Kalibrasi</option>
                     <option value="Tahap 3">Laboratorium Fisika dan Lingkungan</option>
                     <?php
                     }

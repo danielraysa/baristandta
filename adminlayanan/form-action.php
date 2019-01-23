@@ -10,10 +10,11 @@
             $antrian = mt_rand(1000000000,  mt_getrandmax());
             $is_unique = false;
             $idpendaftaran = mysqli_real_escape_string($koneksi, $_POST['id_pendaftaran']);
-            //$namaperusahaan = mysqli_real_escape_string($koneksi, $_POST['nama_perusahaan']);
+            $namaperusahaan = mysqli_real_escape_string($koneksi, $_POST['nama_perusahaan']);
             //$namaproduk = mysqli_real_escape_string($koneksi, $_POST['nama_produk']);
             //$jenisproduk = $_POST['jenis_produk'];
             $namalayanan = $_POST['layanan_sertifikasi'];
+            $jabatan = $_POST['jabatan'];
             $expired = $_POST['expired'];
             $namapengunjung = mysqli_real_escape_string($koneksi, $_POST['nama_pengunjung']);
             while (!$is_unique) {
@@ -26,9 +27,10 @@
                 }
             }
 
-            $insert = mysqli_query($koneksi, "INSERT INTO antrian (no_antrian, id_layanan, id_pendaftaran, masa_expired, status) VALUES ('".$antrian."','".$namalayanan."','".$idpendaftaran."', ".$expired.", 'Waiting')");        
-            
-            if($insert) {
+            $insert = mysqli_query($koneksi, "INSERT INTO antrian (no_antrian, id_layanan, id_pendaftaran, masa_expired, status) VALUES ('".$antrian."','".$namalayanan."','".$idpendaftaran."', ".$expired.", 'Waiting')");
+            $update = mysqli_query($koneksi, "UPDATE pengunjung SET asal_perusahaan = '".$namaperusahaan."', nama_pengunjung = '".$namapengujung."', jabatan = '".$jabatan."' WHERE id_pengunjung = '".$idpendaftaran."'");
+
+            if($insert && $update) {
                 header("location: ../adminlayanan/index.1.php?success");
             }
             else {
@@ -50,7 +52,7 @@
         $status = $_POST['status_sertifikasi'];
     
         $update = mysqli_query($koneksi, "UPDATE pendaftaran SET nama_produk = '".$namaproduk."' WHERE id_pendaftaran = '".$idpendaftaran."'");
-        $update2 = mysqli_query($koneksi, "UPDATE pengunjung SET asal_perusahaan = '".$namaperusahaan."', nama_pengunjung = '".$namapengunjung."' WHERE id_pengunjung = '".$idpendaftaran."'");
+        $update2 = mysqli_query($koneksi, "UPDATE pengunjung SET asal_perusahaan = '".$namaperusahaan."' WHERE id_pengunjung = '".$idpendaftaran."'");
         $update3 = mysqli_query($koneksi, "UPDATE antrian SET status = '".$status."' WHERE id_pendaftaran = '".$idpendaftaran."'");
         if($update && $update2 && $update3) {
         header("location: ../adminlayanan/index.2.php?success");

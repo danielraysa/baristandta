@@ -18,7 +18,11 @@
       <img src="../report/LOGOKEMENPRN.jpg" id="icon" alt="User Icon" />
     </div>
 <BR>
-
+    <?php
+    if (isset($_GET['error'])) {
+      echo "<script>alert('Wrong username/password');</script>";
+    }
+    ?>
     <!-- Login Form -->
     <form id="login-form" method="post" action="action-check.php" role="form" style="display: block;">
       <input type="text" class="fadeIn second" name="username" placeholder="Username">

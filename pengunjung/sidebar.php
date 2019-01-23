@@ -7,8 +7,8 @@
                     
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nama Pengunjung</div>
-                    <div class="email">nama perusahaan</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nama_pengunjung']; ?></div>
+                    <div class="email"><?php echo $_SESSION['nama_perusahaan']; ?></div>
                     <!--
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
@@ -29,27 +29,18 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">PILIHAN LAYANAN</li>
-                    <li>
-                        <div class="row">
-                        <div class="form-group">
-                        <div class="form-line">
-                            
-                        </div>
-                        </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="INDEX.PHP">
+                    
+                    <li class="active">
+                        <a href="#">
                             <i class="material-icons">text_fields</i>
                             <span>Tahap Sertifikasi Produk</span>
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" >
+                        <a href="#">
                             <i class="material-icons">widgets</i>
                             <span>Informasi Produk</span>
                         </a>
-                       
                     <li>
                         <a role="button" href="#" id="logoutButton">
                             <i class="material-icons">lock</i>

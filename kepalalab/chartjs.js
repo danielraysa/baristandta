@@ -101,7 +101,7 @@ function getChartJs(type) {
                     ],
                 }],
                 labels: [
-                    "Pink",
+                    "Bintang 1",
                     "Amber",
                     "Cyan",
                     "Light Green"
@@ -109,7 +109,7 @@ function getChartJs(type) {
             },
             options: {
                 responsive: true,
-                legend: false
+                legend: true
             }
         }
     }

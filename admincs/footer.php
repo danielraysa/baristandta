@@ -62,8 +62,10 @@
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
     <script>
+        var stars;
         $(':radio').change(function() {
             console.log('New star rating: ' + this.value);
+            stars = this.value;
         });
     </script>
     <script>
@@ -90,8 +92,42 @@
                     $('$id_pendaftaran').val("");
                 }
             }
-            });
         });
+    });
+    </script>
+    <script>
+    $('#btnservice').click(function(e){
+        var var_nama = $('#nama_pengunjung').val();
+        var var_perusahaan = $('#asal_perusahaan').val();
+        var var_keluhan = $('#data_keluhan').val();
+        e.preventDefault(); 
+        $.ajax({
+            url:"ajax-keluhan.php",
+            type:"POST",
+            data: {nama: var_nama, perusahaan: var_perusahaan, keluhan: var_keluhan},
+            //data : "{'nama': "+nama+", 'perusahaan': "+perusahaan+", 'keluhan': "+keluhan+"}",
+            success : function() {
+                alert("Berhasil menyimpan data keluhan");
+                $('#myModal').modal('toggle');
+            }
+        });
+    });
+    </script>
+    <script>
+    $('#saveRating').click(function(e){
+        var var_rating = $(':radio').val();
+        var var_keterangan = $('#keterangan').val();
+        e.preventDefault(); 
+        $.ajax({
+            url:"ajax-rating.php",
+            type:"POST",
+            data: {rating: stars, keterangan: var_keterangan},
+            success : function() {
+                alert("Berhasil menyimpan rating");
+                location.reload();
+            }
+        });
+    });
     </script>
     <script>
 	$('.modalLink').click(function(){

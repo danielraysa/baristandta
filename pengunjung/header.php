@@ -1,6 +1,15 @@
 <?php
     session_start();
     include "../connection.php";
+    if (!isset($_SESSION['id_pengunjung'])) {
+        header("location:../loginpengunjung/");
+    }
+    $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, a.id_layanan, a.status, p.asal_perusahaan, p.nama_pengunjung FROM antrian a JOIN pengunjung p ON a.id_pendaftaran = p.id_pengunjung WHERE a.id_pendaftaran = '".$_SESSION['id_pengunjung']."'");
+    $fet = mysqli_fetch_array($query);
+    $_SESSION['id_layanan'] = $fet['id_layanan'];
+    $_SESSION['status_tahapan'] = $fet['status'];
+    $_SESSION['nama_perusahaan'] = $fet['asal_perusahaan'];
+    $_SESSION['nama_pengunjung'] = $fet['nama_pengunjung'];
 ?>
 <!DOCTYPE html>
 <html>

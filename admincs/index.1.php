@@ -48,23 +48,23 @@
                             <form>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" placeholder="Nama Pengunjung" />
+                                    <input type="text" id="nama_pengunjung" class="form-control" placeholder="Nama Pengunjung" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" placeholder="Asal Perusahaan" />
+                                    <input type="text" id="asal_perusahaan" class="form-control" placeholder="Asal Perusahaan" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea rows="4" class="form-control no-resize" placeholder="Tuliskan Keluhan/ Pertanyaan Pengunjung..."></textarea>
+                                    <textarea rows="4" id="data_keluhan"  class="form-control no-resize" placeholder="Tuliskan Keluhan/ Pertanyaan Pengunjung..."></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary waves-effect">Simpan Data Pelayanan</button>
-                                <button type="button" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#myModal">Simpan Data Pelayanan</button>
+                                <button type="button" id="btnservice" class="btn btn-primary waves-effect">Simpan Data Pelayanan</button>
+                                <button type="button" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#myModal">Buka Rating</button>
                             </div>
                             </form>
                         </div>
@@ -73,7 +73,7 @@
                 <!-- #END# Task Info -->
                 
             </div>
-            <?php //if (isset($_GET['added'])) { ?>
+            <!-- Modal Rating -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
@@ -148,46 +148,52 @@
                             text-shadow: 0 0 5px #f00;
                             }
                         </style>
-                            <form class="rating" action="form-action.php" method="post">
+                        <form class="rating">
+                            <div class="form-group">
                                 <label>
-                                    <input type="radio" name="stars" value="1" />
+                                    <input type="radio" id="stars" name="stars" value="1" />
                                     <span class="icon">★</span>
                                 </label>
                                 <label>
-                                    <input type="radio" name="stars" value="2" />
+                                    <input type="radio" id="stars" name="stars" value="2" />
                                     <span class="icon">★</span>
                                     <span class="icon">★</span>
                                 </label>
                                 <label>
-                                    <input type="radio" name="stars" value="3" />
+                                    <input type="radio" id="stars" name="stars" value="3" />
                                     <span class="icon">★</span>
                                     <span class="icon">★</span>
                                     <span class="icon">★</span>   
                                 </label>
                                 <label>
-                                    <input type="radio" name="stars" value="4" />
+                                    <input type="radio" id="stars" name="stars" value="4" />
                                     <span class="icon">★</span>
                                     <span class="icon">★</span>
                                     <span class="icon">★</span>
                                     <span class="icon">★</span>
                                 </label>
                                 <label>
-                                    <input type="radio" name="stars" value="5" />
+                                    <input type="radio" id="stars" name="stars" value="5" />
                                     <span class="icon">★</span>
                                     <span class="icon">★</span>
                                     <span class="icon">★</span>
                                     <span class="icon">★</span>
                                     <span class="icon">★</span>
                                 </label>
+                            </div>
+                            </form>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea rows="4" id="keterangan" class="form-control no-resize" placeholder="Keterangan..."></textarea>
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" id="closeRating" class="btn btn-link waves-effect" name="save-rating">SAVE</button>
+                            <button type="submit" id="saveRating" class="btn btn-link waves-effect" data-dismiss="modal" name="save-rating">SAVE</button>
                         </div>
-                        </form>
                     </div>
                 </div>
             </div>
-            <?php //} ?>
 
             <div class="row clearfix">
                 <!-- Task Info -->
@@ -217,17 +223,10 @@
                                             showCancelButton: false,
                                             confirmButtonText: "OK"
                                         });
-                                        timer = duration;
                                         $('#myModal').modal('toggle');
-                                        if(document.getElementById('closeRating').clicked == true){
-                                            timer = duration;
-                                        }
                                     }
                                 }, 1000);
                             }
-                            /*document.getElementById('button').onclick = function() {
-                                alert("button was clicked");
-                            }​;​*/
                             window.onload = function () {
                                 //set minutes
                                 var fiveMinutes = 60 * 15,

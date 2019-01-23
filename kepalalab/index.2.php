@@ -1,4 +1,5 @@
-﻿<?php include "header.php"; ?>
+﻿<?php $filename = basename(__FILE__); ?>
+<?php include "header.php"; ?>
     <?php include "navbar.php"; ?>
     <?php include "sidebar.php"; ?>
 
@@ -42,6 +43,7 @@
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label for="password_2">Persentase Kinerja Karyawan Bulan ini </label>
                                     </div>
+                                <canvas id="pie_chart" height="100"></canvas>
                                 <canvas id="pie_chart" height="100"></canvas>
                             </div>
                         </div>

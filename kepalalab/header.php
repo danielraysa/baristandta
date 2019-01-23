@@ -1,6 +1,9 @@
+<?php
+    session_start();
+    include "../connection.php";
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">

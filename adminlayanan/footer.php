@@ -58,6 +58,20 @@
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
     <script>
+    $(document).ready(function(){
+        setInterval(function(){
+            $('#myModalRating').modal('show');
+        }, 60000);
+    });
+    </script>
+    <script>
+        var stars;
+        $(':radio').change(function() {
+            console.log('New star rating: ' + this.value);
+            stars = this.value;
+        });
+    </script>
+    <script>
         $('.cekbutton').click(function(e){
         var id = $('#id_pendaftaran').val();
             e.preventDefault(); 
@@ -98,6 +112,7 @@
                     $('#namapengunjung').val(datanew.nama);
                     $('#nama_perusahaan').val(datanew.perusahaan);
                     //$('#nama_perusahaan').prop('disabled', true);
+                    
                 }
             });
         });
@@ -126,6 +141,22 @@
 		});
 	});
 	</script>
+    <script>
+    $('#saveRating').click(function(e){
+        //var stars = $(':radio').val();
+        var var_keterangan = $('#keterangan').val();
+        e.preventDefault(); 
+        $.ajax({
+            url:"ajax-rating.php",
+            type:"POST",
+            data: {rating: stars, keterangan: var_keterangan},
+            success : function() {
+                alert("Berhasil menyimpan rating");
+                location.reload();
+            }
+        });
+    });
+    </script>
     <script>
         $('#logoutButton').on('click', function (event) {
             event.preventDefault();

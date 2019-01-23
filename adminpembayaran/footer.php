@@ -57,6 +57,40 @@
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
+    <?php
+        if (isset($_GET['success'])) {
+    ?>
+    <script>
+        setTimeout(function(){
+            $('#myModalRating').modal('show');
+        }, 2000);
+    </script>
+    <?php
+        }
+    ?>
+    <script>
+        var stars;
+        $(':radio').change(function() {
+            console.log('New star rating: ' + this.value);
+            stars = this.value;
+        });
+    </script>
+    <script>
+    $('#saveRating').click(function(e){
+        //var stars = $(':radio').val();
+        var var_keterangan = $('#keterangan').val();
+        e.preventDefault(); 
+        $.ajax({
+            url:"ajax-rating.php",
+            type:"POST",
+            data: {rating: stars, keterangan: var_keterangan},
+            success : function() {
+                alert("Berhasil menyimpan rating");
+                //window.location.href = "index.php";
+            }
+        });
+    });
+    </script>
     <script>
     $('.cekdaftar').click(function(e){
         var id = $('#id_pendaftaran').val();

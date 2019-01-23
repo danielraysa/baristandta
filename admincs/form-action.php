@@ -36,8 +36,5 @@
             header("location: ../admincs/index.2.php?error");
         }
     }
-    if (isset($_POST['save-rating'])) {
-        echo "rating : ".$_POST['stars'];
-    }
     
 ?>

@@ -1,7 +1,6 @@
 ﻿    <?php include "header.php"; ?>
     <?php include "navbar.php"; ?>
     <?php include "sidebar.php"; ?>
-
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
@@ -26,7 +25,7 @@
                         </div>
                         <div class="content">
                             <div class="font-bold font-20">TAHAP 1</div>
-                            <div class="font-bold font-15">Laboratorium Kimia & Lingkungan</div>
+                            <div class="font-bold font-15">Pengumpulan Uji Produk</div>
                         </div>
                     </div>
                 </div>
@@ -37,7 +36,18 @@
                         </div>
                         <div class="content">
                             <div class="font-bold font-20">TAHAP 2</div>
-                            <div class="font-bold font-15">Laboratorium Fisika</div>
+                            <?php
+                            if ($_SESSION['id_layanan'] == "LYN001") {
+                            ?>
+                            <div class="font-bold font-15">Laboratorium Kimia dan Lingkungan</div>
+                            <?php
+                            }
+                            if ($_SESSION['id_layanan'] == "LYN002") {
+                            ?>
+                            <div class="font-bold font-15">Laboratorium Teknis Pengujian dan Kalibrasi</div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -48,7 +58,18 @@
                         </div>
                         <div class="content">
                             <div class="font-bold font-20">TAHAP 3</div>
-                            <div class="font-bold font-15">Laboratorium Pengujian Tahap Akhir & Kalibrasi</div>
+                            <?php
+                            if ($_SESSION['id_layanan'] == "LYN001") {
+                            ?>
+                            <div class="font-bold font-15">Laboratorium Pengujian Mutu</div>
+                            <?php
+                            }
+                            if ($_SESSION['id_layanan'] == "LYN002") {
+                            ?>
+                            <div class="font-bold font-15">Laboratorium Fisika dan Lingkungan</div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -59,7 +80,7 @@
                             </div>
                             <div class="content">
                                 <div class="font-bold font-20">TAHAP 4</div>
-                                <div class="font-bold font-15">Tahap Hasil Sertifikasi</div>
+                                <div class="font-bold font-15">Keputusan Sertifikasi</div>
                             </div>
                         </div>
                 </div>

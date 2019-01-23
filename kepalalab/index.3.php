@@ -1,4 +1,5 @@
-﻿<?php include "header.php"; ?>
+﻿<?php $filename = basename(__FILE__); ?>
+<?php include "header.php"; ?>
     <?php include "navbar.php"; ?>
     <?php include "sidebar.php"; ?>
 
@@ -32,97 +33,65 @@
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                            <th>Salary</th>
+                                            <th>ID Pendaftaran</th>
+                                            <th>Asal Perusahaan</th>
+                                            <th>Nama Produk</th>
+                                            <th>Jenis Produk</th>
+                                            <th>Jenis Sertifikasi</th>
+                                            <th>Masa Expired</th>
+                                            <th>Prioritas</th>
+                                            <th>Status Sertifikasi</th>
+                                            <th>Tindakan</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                            <th>Salary</th>
+                                        <th>ID Pendaftaran</th>
+                                            <th>Asal Perusahaan</th>
+                                            <th>Nama Produk</th>
+                                            <th>Jenis Produk</th>
+                                            <th>Jenis Sertifikasi</th>
+                                            <th>Masa Expired</th>
+                                            <th>Prioritas</th>
+                                            <th>Status Sertifikasi</th>
+                                            <th>Tindakan</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    <?php
+                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung");
+                                        while ($row = mysqli_fetch_array($query)) {
+                                    ?>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td><button class="btn btn-success waves-effect">Update</button>
-                                            <button class="btn btn-danger waves-effect">Delete</button></td>
+                                            <td><?php echo $row['id_pendaftaran']; ?></td>
+                                            <td><?php echo $row['asal_perusahaan']; ?></td>
+                                            <td><?php echo $row['nama_produk']; ?></td>
+                                            <td><?php echo $row['jenis_produk']; ?></td>
+                                            <td><?php echo $row['nama_layanan']; ?></td>
+                                            <td><?php echo $row['masa_expired']; ?> hari</td>
+                                            <td>
+                                            <?php
+                                            if ($row['masa_expired'] <= 10) {
+                                                echo "High Priority";
+                                            }
+                                            else if ($row['masa_expired'] > 10 && $row['masa_expired'] <= 30) {
+                                                echo "Medium Priority";
+                                            }
+                                            else {
+                                                echo "Low Priority";
+                                            }
+                                            ?>
+                                            </td>
+                                            <td><?php echo $row['status']; ?></td>
+                                            <td><button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" >Update</button>
+                                            
+                                            <button class="btn btn-danger waves-effect">Delete</button>
+                                              <button class="btn btn-success waves-effect">Approve</button>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                            <td><button class="btn btn-success waves-effect">Update</button>
-                                            <button class="btn btn-danger waves-effect">Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                            <td><button class="btn btn-success waves-effect">Update</button>
-                                            <button class="btn btn-danger waves-effect">Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2012/03/29</td>
-                                            <td>$433,060</td>
-                                            <td><button class="btn btn-success waves-effect">Update</button>
-                                            <button class="btn btn-danger waves-effect">Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                            <td><button class="btn btn-success waves-effect">Update</button>
-                                            <button class="btn btn-danger waves-effect">Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2012/12/02</td>
-                                            <td>$372,000</td>
-                                            <td><button class="btn btn-success waves-effect">Update</button>
-                                            <button class="btn btn-danger waves-effect">Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Herrod Chandler</td>
-                                            <td>Sales Assistant</td>
-                                            <td>San Francisco</td>
-                                            <td>59</td>
-                                            <td>2012/08/06</td>
-                                            <td>$137,500</td>
-                                            <td><button class="btn btn-success waves-effect">Update</button>
-                                            <button class="btn btn-danger waves-effect">Delete</button></td>
-                                        </tr>
+                                    <?php
+                                        }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
