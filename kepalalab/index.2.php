@@ -42,9 +42,34 @@
                             <div class="row">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label for="password_2">Persentase Kinerja Karyawan Bulan ini </label>
-                                    </div>
-                                <canvas id="pie_chart" height="100"></canvas>
-                                <canvas id="pie_chart" height="100"></canvas>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <canvas id="myChart"></canvas>
+                                    <?php
+                                        $a = mysqli_query($koneksi, "SELECT ROUND(AVG(angka_rating), 1) as rating FROM kinerja WHERE id_pegawai = 'LKT001'");
+                                        $b = mysqli_fetch_array($a);
+                                        echo "<br><center>Rating : ".$b['rating']."</center>";
+                                    ?>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <canvas id="myChart_A"></canvas>
+                                    <?php
+                                        $a = mysqli_query($koneksi, "SELECT ROUND(AVG(angka_rating), 1) as rating FROM kinerja WHERE id_pegawai = 'LKT002'");
+                                        $b = mysqli_fetch_array($a);
+                                        echo "<br><center>Rating : ".$b['rating']."</center>";
+                                    ?>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <canvas id="myChart_B"></canvas>
+                                    <?php
+                                        $a = mysqli_query($koneksi, "SELECT ROUND(AVG(angka_rating), 1) as rating FROM kinerja WHERE id_pegawai = 'LKT003'");
+                                        $b = mysqli_fetch_array($a);
+                                        echo "<br><center>Rating : ".$b['rating']."</center>";
+                                    ?>
+                                </div>
                             </div>
                         </div>
                     </div>

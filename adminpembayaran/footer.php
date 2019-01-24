@@ -118,6 +118,12 @@
     });
     </script>
     <script>
+	$('.modalLink').click(function(){
+		$('#idbayar').val = $(this).attr('data-id');
+		console.log(this);
+	});
+	</script>
+    <script>
         $('#logoutButton').on('click', function (event) {
             event.preventDefault();
             var that = this;

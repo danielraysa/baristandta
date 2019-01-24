@@ -45,7 +45,7 @@
     <script src="../js/pages/ui/dialogs.js"></script>
     <script src="../js/pages/tables/jquery-datatable.js"></script>
     
-    <script src="chartjs.js"></script>
+    <script src="data-chart.js"></script>
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>

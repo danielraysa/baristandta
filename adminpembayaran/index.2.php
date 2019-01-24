@@ -65,7 +65,7 @@
                                             <td><?php echo $row['jenis_produk']; ?></td>
                                             <td><?php echo $row['nama_layanan']; ?></td>
                                             <td><?php echo $row['total_bayar']; ?></td>
-                                            <td><button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" >Update</button></td>
+                                            <td><button type="button" name="update" class="btn btn-danger waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" >Delete</button></td>
                                         </tr>
                                     <?php
                                         }
@@ -78,7 +78,25 @@
                     </div>
                 </div>
                 <!-- #END# Task Info -->
-                
+                <!-- Modal Delete -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                        <form action="form-action.php" method="post">
+                            <div class="modal-header"><h4 class="modal-title">Hapus</h4></div>
+                            <div class="modal-body">
+                                Hapus data?
+                                <input type="hidden" id="idbayar" name="id_bayar" value=""/>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-link waves-effect" type="submit" name="delete">Hapus</button>
+                                <button class="btn btn-link waves-effect" type="button" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

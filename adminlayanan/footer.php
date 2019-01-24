@@ -57,13 +57,7 @@
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
-    <script>
-    $(document).ready(function(){
-        setInterval(function(){
-            $('#myModalRating').modal('show');
-        }, 60000);
-    });
-    </script>
+
     <script>
         var stars;
         $(':radio').change(function() {
@@ -92,6 +86,9 @@
                     $('#layanan').prop('disabled', true);
                     $('#nama_perusahaan').prop('disabled', true);
                     $('#status').prop('disabled', true);
+                    setTimeout(function(){
+                        $('#myModalRating').modal('show');
+                    }, 3000);
                 }
             });
         });

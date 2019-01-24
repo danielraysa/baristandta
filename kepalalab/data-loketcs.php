@@ -15,7 +15,7 @@ if(!$mysqli){
 	die("Connection failed: " . $mysqli->error);
 }
 
-$query = sprintf("SELECT angka_rating, COUNT(*) as jumlahdata, FROM kinerja WHERE id_pegawai = 'LKT001' GROUP BY angka_rating");
+$query = sprintf("SELECT angka_rating, COUNT(*) as jumlahdata FROM kinerja WHERE id_pegawai = 'LKT001' GROUP BY angka_rating");
 //execute query
 $result = $mysqli->query($query);
 

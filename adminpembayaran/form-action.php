@@ -30,4 +30,16 @@
         }
     }
 
+    if(isset($_POST['delete'])) {
+        $idpendaftaran = $_POST['id_bayar'];
+        $delete = mysqli_query($koneksi, "UPDATE pembayaran SET status_bayar = 'Dihapus' WHERE id_pendaftaran = ".$idpendaftaran."");
+        if($delete) {
+            header("location: ../adminpembayaran/index.2.php?success");
+        }
+        else {
+            $_SESSION['error-msg'] = mysqli_error($koneksi);
+            header("location: ../adminpembayaran/index.2.php?error");
+        }
+    }
+
 ?>
