@@ -4,7 +4,7 @@
     if (isset($_GET['id'])) {
         $q = mysqli_real_escape_string($koneksi, $_GET['id']);
 
-        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, l.nama_layanan, p2.asal_perusahaan, a.status from antrian a JOIN pengunjung p2 ON a.id_pendaftaran = p2.id_pengunjung JOIN layanan l ON a.id_layanan = l.id_layanan WHERE a.id_pendaftaran = '".$q."'");
+        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, l.nama_layanan, p2.asal_perusahaan, p2.nama_pengunjung, a.status from antrian a JOIN pengunjung p2 ON a.id_pendaftaran = p2.id_pengunjung JOIN layanan l ON a.id_layanan = l.id_layanan WHERE a.id_pendaftaran = '".$q."'");
         if (mysqli_num_rows($query) == 1) {
             $row = mysqli_fetch_array($query);
             

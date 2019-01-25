@@ -65,6 +65,7 @@
                                             <th>Asal Perusahaan</th>
                                             <th>Nama Produk</th>
                                             <th>Jenis Produk</th>
+                                            <th>Tanggal Pendaftaran</th>
                                             <th>Tanggal Penyerahan</th>
                                             <th>Nama Pengunjung</th>
                                             <th>Tindakan</th>
@@ -72,7 +73,7 @@
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                        $query = mysqli_query($koneksi, "SELECT p.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, p.tanggal_penyerahan, p1.nama_pengunjung FROM pendaftaran p JOIN pengunjung p1 ON p.id_pendaftaran = p1.id_pengunjung WHERE p.tanggal_penyerahan != '0000-00-00'");
+                                        $query = mysqli_query($koneksi, "SELECT p.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, p.tanggal_pendaftaran, p.tanggal_penyerahan, p1.nama_pengunjung FROM pendaftaran p JOIN pengunjung p1 ON p.id_pendaftaran = p1.id_pengunjung WHERE p.tanggal_penyerahan != '0000-00-00'");
                                         while ($row = mysqli_fetch_array($query)) {
                                     ?>
                                         <tr>
@@ -80,6 +81,7 @@
                                             <td><?php echo $row['asal_perusahaan']; ?></td>
                                             <td><?php echo $row['nama_produk']; ?></td>
                                             <td><?php echo $row['jenis_produk']; ?></td>
+                                            <td><?php echo $row['tanggal_pendaftaran']; ?></td>
                                             <td><?php echo $row['tanggal_penyerahan']; ?></td>
                                             <td><?php echo $row['nama_pengunjung']; ?></td>
                                             <td><button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" >Update</button></td>

@@ -34,7 +34,11 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="password_2" class="form-control" placeholder="" disabled>
+                                            <?php
+                                                $ab = mysqli_query($koneksi,"SELECT SUM(total_bayar) as total FROM pembayaran WHERE MONTH(tanggal_bayar) = '".date('m')."'");
+                                                $get = mysqli_fetch_array($ab);
+                                            ?>
+                                            <input type="text" id="password_2" class="form-control" value="<?php echo $get['total']; ?>" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -46,7 +50,7 @@
                                 
                             </div>
                             <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="col-lg-6 col-md-12 col-sm-12">
                                     <canvas id="myChart"></canvas>
                                     <?php
                                         $a = mysqli_query($koneksi, "SELECT ROUND(AVG(angka_rating), 1) as rating FROM kinerja WHERE id_pegawai = 'LKT001'");
@@ -54,7 +58,7 @@
                                         echo "<br><center>Rating : ".$b['rating']."</center>";
                                     ?>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="col-lg-6 col-md-12 col-sm-12">
                                     <canvas id="myChart_A"></canvas>
                                     <?php
                                         $a = mysqli_query($koneksi, "SELECT ROUND(AVG(angka_rating), 1) as rating FROM kinerja WHERE id_pegawai = 'LKT002'");
@@ -62,7 +66,7 @@
                                         echo "<br><center>Rating : ".$b['rating']."</center>";
                                     ?>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="col-lg-6 col-md-12 col-sm-12">
                                     <canvas id="myChart_B"></canvas>
                                     <?php
                                         $a = mysqli_query($koneksi, "SELECT ROUND(AVG(angka_rating), 1) as rating FROM kinerja WHERE id_pegawai = 'LKT003'");

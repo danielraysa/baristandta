@@ -18,7 +18,7 @@
         //$jenisproduk = $_POST['jenis_produk'];
         //$namapengunjung = mysqli_real_escape_string($koneksi, $_POST['nama_pengunjung']);
         //echo $tglpembayaran;
-        $insert = mysqli_query($koneksi, "INSERT INTO pembayaran (id_pendaftaran, total_bayar, tanggal_bayar) VALUES ('".$idpendaftaran."','".$totalbayar."','".$tglpembayaran."')");
+        $insert = mysqli_query($koneksi, "INSERT INTO pembayaran (id_pendaftaran, total_bayar, tanggal_bayar, status_bayar) VALUES ('".$idpendaftaran."','".$totalbayar."','".$tglpembayaran."', 1)");
         //$update2 = mysqli_query($koneksi, "UPDATE pengunjung SET asal_perusahaan = '".$namaperusahaan."', nama_pengunjung = '".$namapengunjung."' WHERE id_pengunjung = '".$idpendaftaran."'");
         
         if($insert) {
@@ -32,7 +32,7 @@
 
     if(isset($_POST['delete'])) {
         $idpendaftaran = $_POST['id_bayar'];
-        $delete = mysqli_query($koneksi, "UPDATE pembayaran SET status_bayar = 'Dihapus' WHERE id_pendaftaran = ".$idpendaftaran."");
+        $delete = mysqli_query($koneksi, "UPDATE pembayaran SET status_bayar = 0 WHERE id_pendaftaran = ".$idpendaftaran."");
         if($delete) {
             header("location: ../adminpembayaran/index.2.php?success");
         }

@@ -50,6 +50,61 @@
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
     <script>
+	$('.modalLink').click(function(){
+		var id = $(this).attr('data-id');
+		console.log(id);
+		$.ajax({
+			url:"ajax.php",
+			type: "GET",
+			data: "ID="+id,
+			success:function(result){
+                console.log(result)
+                var data = JSON.parse(result);
+				$('#id_pendaftaran').val(data.id);
+                $('#nama_perusahaan').val(data.perusahaan);
+                $('#nama_produk').val(data.nama);
+                $('#jenis_produk').val(data.jenis);
+                $('#jenis_sertifikasi').val(data.sertifikasi);
+                $('#id_pendaftaran').prop('disabled', true);
+                $('#jenis_produk').prop('disabled', true);
+                $('#jenis_sertifikasi').prop('disabled', true);
+			}
+		});
+    });
+    $('.modalUpdate').click(function(){
+		var id = $(this).attr('data-id');
+		console.log(id);
+		$.ajax({
+			url:"ajax.php",
+			cache:false,
+			type: "GET",
+			data: "IDUPDATE="+id,
+			success:function(result){
+                console.log(result)
+                var data = JSON.parse(result);
+                $('#id_pendaftaran').val(data.id);
+                $('#nama_perusahaan').val(data.perusahaan);
+                $('#nama_produk').val(data.produk);
+                $('#jenis_produk').val(data.jenis);
+                $('#jenis_sertifikasi').val(data.sertifikasi);
+                $('#id_pendaftaran').prop('disabled', true);
+                $('#jenis_produk').prop('disabled', true);
+                $('#jenis_sertifikasi').prop('disabled', true);
+			}
+		});
+    });
+    $('.btnDelete').click(function(){
+        var id = $(this).attr('data-id');
+		$('#idpendaftaran').val(id);
+        console.log(id);
+    });
+    $('.btnApprove').click(function(){
+		var id = $(this).attr('data-id');
+		$('#idapprove').val(id);
+        console.log(id);
+    });
+	</script>
+    <script>
         $('#logoutButton').on('click', function (event) {
             event.preventDefault();
             var that = this;

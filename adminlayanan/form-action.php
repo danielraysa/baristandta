@@ -16,7 +16,7 @@
             $namalayanan = $_POST['layanan_sertifikasi'];
             $jabatan = $_POST['jabatan'];
             $expired = $_POST['expired'];
-            $namapengunjung = mysqli_real_escape_string($koneksi, $_POST['nama_pengunjung']);
+            $namapengunjung = $_POST['nama_pengunjung'];
             while (!$is_unique) {
                 $result = mysqli_query($koneksi, "SELECT no_antrian FROM antrian WHERE no_antrian = '".$antrian."' LIMIT 1");
                 if (mysqli_num_rows($result) == 0) {
@@ -27,8 +27,8 @@
                 }
             }
 
-            $insert = mysqli_query($koneksi, "INSERT INTO antrian (no_antrian, id_layanan, id_pendaftaran, masa_expired, status) VALUES ('".$antrian."','".$namalayanan."','".$idpendaftaran."', ".$expired.", 'Waiting')");
-            $update = mysqli_query($koneksi, "UPDATE pengunjung SET asal_perusahaan = '".$namaperusahaan."', nama_pengunjung = '".$namapengujung."', jabatan = '".$jabatan."' WHERE id_pengunjung = '".$idpendaftaran."'");
+            $insert = mysqli_query($koneksi, "INSERT INTO antrian (no_antrian, id_layanan, id_pendaftaran, masa_expired, status, approval) VALUES ('".$antrian."','".$namalayanan."','".$idpendaftaran."', ".$expired.", 'Tahap 1', 0)");
+            $update = mysqli_query($koneksi, "UPDATE pengunjung SET asal_perusahaan = '".$namaperusahaan."', nama_pengunjung = '".$namapengunjung."', jabatan = '".$jabatan."' WHERE id_pengunjung = '".$idpendaftaran."'");
 
             if($insert && $update) {
                 header("location: ../adminlayanan/index.1.php?success");
@@ -55,7 +55,7 @@
         $update2 = mysqli_query($koneksi, "UPDATE pengunjung SET asal_perusahaan = '".$namaperusahaan."' WHERE id_pengunjung = '".$idpendaftaran."'");
         $update3 = mysqli_query($koneksi, "UPDATE antrian SET status = '".$status."' WHERE id_pendaftaran = '".$idpendaftaran."'");
         if($update && $update2 && $update3) {
-        header("location: ../adminlayanan/index.2.php?success");
+            header("location: ../adminlayanan/index.2.php?success");
         }
         else {
             $_SESSION['error-msg'] = mysqli_error($koneksi);

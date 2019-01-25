@@ -119,7 +119,8 @@
     </script>
     <script>
 	$('.modalLink').click(function(){
-		$('#idbayar').val = $(this).attr('data-id');
+        var id = $(this).attr('data-id');
+		$('#idbayar').val(id);
 		console.log(this);
 	});
 	</script>

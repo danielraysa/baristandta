@@ -55,7 +55,7 @@
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, b.total_bayar FROM antrian a JOIN pembayaran b ON a.id_pendaftaran = b.id_pendaftaran JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung");
+                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, b.total_bayar FROM antrian a JOIN pembayaran b ON a.id_pendaftaran = b.id_pendaftaran JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung WHERE b.status_bayar = 1");
                                         while ($row = mysqli_fetch_array($query)) {
                                     ?>
                                         <tr>

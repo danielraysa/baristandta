@@ -68,7 +68,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="nama_perusahaan" id="nama_perusahaan" class="form-control" placeholder="">
+                                                <input type="text" name="nama_perusahaan" id="nama_perusahaan" class="form-control" placeholder="Nama Perusahaan">
                                             </div>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="nama_pengunjung" id="namapengunjung" class="form-control" placeholder="">
+                                                <input type="text" name="nama_pengunjung" id="namapengunjung" class="form-control" placeholder="Nama Pengunjung">
                                             </div>
                                         </div>
                                     </div>

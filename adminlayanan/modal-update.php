@@ -72,28 +72,39 @@ $fet = mysqli_fetch_array($qu);
     </div>
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-            <label for="email_address_2">Status Sertifikasi</label>
+            <label for="email_address_2">Status Sertifikasi Saat Ini</label>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" class="form-control" value="<?php echo $fet['status']; ?>" placeholder="Nama Layanan" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+            <label for="email_address_2">Update Status Sertifikasi</label>
         </div>
         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
             
                 <select name="status_sertifikasi" class="bootstrap-select form-control show-tick">
-                    <option value="Tahap 1">Pengumpulan Uji Produk</option>
+                    <option value="Tahap 1">Tahap 1 - Pengumpulan Uji Produk</option>
                     <?php
                     if ($fet['id_layanan'] == "LYN001") {
                     ?>
-                    <option value="Tahap 2">Laboratorium Kimia dan Lingkungan</option>
-                    <option value="Tahap 3">Laboratorium Pengujian Mutu</option>
+                    <option value="Tahap 2">Tahap 2 - Laboratorium Kimia dan Lingkungan</option>
+                    <option value="Tahap 3">Tahap 3 - Laboratorium Pengujian Mutu</option>
                     <?php
                     }
                     if ($fet['id_layanan'] == "LYN002") {
                     ?>
-                    <option value="Tahap 2">Laboratorium Teknis Pengujian dan Kalibrasi</option>
-                    <option value="Tahap 3">Laboratorium Fisika dan Lingkungan</option>
+                    <option value="Tahap 2">Tahap 2 - Laboratorium Teknis Pengujian dan Kalibrasi</option>
+                    <option value="Tahap 3">Tahap 3 - Laboratorium Fisika dan Lingkungan</option>
                     <?php
                     }
                     ?>
-                    <option value="Tahap 4">Keputusan Sertifikasi</option>
-                    <option value="Selesai">Selesai</option>
+                    <option value="Tahap 4">Tahap 4 - Keputusan Sertifikasi</option>
                 </select>
             
         </div>
