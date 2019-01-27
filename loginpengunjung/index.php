@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <html>
 <head>
   <title>Login dan Pendaftaran Pengunjung </title>
@@ -20,7 +23,7 @@
 <BR>
     <?php
     if (isset($_GET['error'])) {
-      echo "<script>alert('Wrong username/password');</script>";
+      echo "<script>alert('".$_SESSION['error-msg']."');</script>";
     }
     ?>
     <!-- Login Form -->
@@ -32,7 +35,7 @@
     </form>
     <!-- Register Form -->
     <form id="register-form" method="post" action="register-action.php" role="form" style="display: none;">
-      <input type="text" class="fadeIn second" name="namaproduk" placeholder="Nama Produk">
+      <input type="text" class="fadeIn second" name="namaproduk" placeholder="Nama Produk" required>
       <BR>
       <select class="fadeIn second" name="jenisproduk">
       <option value="">Jenis Produk</option>
@@ -40,7 +43,7 @@
         <option value="Non Makanan/Minuman">Non Makanan/Minuman</option>
       </select>
       <BR>
-      <input type="text" class="fadeIn second" name="namaperusahaan" placeholder="Nama Perusahaan">
+      <input type="text" class="fadeIn second" name="namaperusahaan" placeholder="Nama Perusahaan" required>
       <BR>
       <input type="submit" class="fadeIn fourth" name="register" value="Daftar Sekarang">
     </form>

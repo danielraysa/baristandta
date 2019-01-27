@@ -124,7 +124,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="number" name="expired" id="expired" class="form-control" placeholder="">
+                                                <input type="number" name="expired" id="expired" min="1" class="form-control" placeholder="">
                                             </div>
                                         </div>
                                     </div>

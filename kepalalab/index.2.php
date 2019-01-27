@@ -81,6 +81,55 @@
                 <!-- #END# Task Info -->
                 
             </div>
+
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Data Keluhan</h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Asal Perusahaan</th>
+                                            <th>Nama Pengunjung</th>
+                                            <th>Keluhan</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Asal Perusahaan</th>
+                                            <th>Nama Pengunjung</th>
+                                            <th>Keluhan</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <?php
+                                        $query = mysqli_query($koneksi, "SELECT * FROM keluhan");
+                                        $a = 1;
+                                        while ($row = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $a; ?></td>
+                                            <td><?php echo $row['asal_perusahaan']; ?></td>
+                                            <td><?php echo $row['nama_pengunjung']; ?></td>
+                                            <td><?php echo $row['keluhan']; ?></td>
+                                        </tr>
+                                    <?php
+                                        $a++;
+                                        }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

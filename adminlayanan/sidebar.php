@@ -42,7 +42,7 @@
                     }
                     ?>
                         <a href="index.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">search</i>
                             <span>Pengecekan Layanan Sertifikasi</span>
                         </a>
                     </li>
@@ -59,7 +59,7 @@
                     }
                     ?>
                         <a href="index.1.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">content_paste</i>
                             <span>Pendaftaran Layanan Sertifikasi</span>
                         </a>
                     </li>
@@ -76,7 +76,7 @@
                     }
                     ?>
                         <a href="index.2.php">
-                            <i class="material-icons">lock</i>
+                            <i class="material-icons">folder_shared</i>
                             <span>Laporan Layanan Sertifikasi</span>
                         </a>
                     </li>

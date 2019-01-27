@@ -32,15 +32,10 @@
                     
                     <li class="active">
                         <a href="#">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">view_list</i>
                             <span>Tahap Sertifikasi Produk</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="material-icons">widgets</i>
-                            <span>Informasi Produk</span>
-                        </a>
                     <li>
                         <a role="button" href="#" id="logoutButton">
                             <i class="material-icons">lock</i>

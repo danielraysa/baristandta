@@ -42,7 +42,7 @@
                     }
                     ?>
                         <a href="index.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">attach_money</i>
                             <span>Pembayaran Sertifikasi</span>
                         </a>
                     </li>
@@ -59,7 +59,7 @@
                     }
                     ?>
                         <a href="index.2.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">folder_shared</i>
                             <span>Laporan Pembayaran Sertifikasi</span>
                         </a>
                     </li>

@@ -74,7 +74,7 @@
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung");
+                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status, a.approval FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung");
                                         while ($row = mysqli_fetch_array($query)) {
                                     ?>
                                         <tr>
@@ -84,8 +84,20 @@
                                             <td><?php echo $row['jenis_produk']; ?></td>
                                             <td><?php echo $row['nama_layanan']; ?></td>
                                             <td><?php echo $row['masa_expired']; ?> hari</td>
+                                            <?php
+                                                if($row['approval'] == 0) {
+                                            ?>
+                                            <td><?php echo $row['status']." (Belum approval)"; ?></td>
+                                            <td><button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" disabled >Update</button></td>
+                                            <?php
+                                                } 
+                                                else {
+                                            ?>
                                             <td><?php echo $row['status']; ?></td>
                                             <td><button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" >Update</button></td>
+                                            <?php
+                                                }
+                                            ?>
                                         </tr>
                                     <?php
                                         }

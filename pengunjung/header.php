@@ -4,7 +4,7 @@
     if (!isset($_SESSION['id_pengunjung'])) {
         header("location:../loginpengunjung/");
     }
-    $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, a.id_layanan, a.status, p.asal_perusahaan, p.nama_pengunjung FROM antrian a JOIN pengunjung p ON a.id_pendaftaran = p.id_pengunjung WHERE a.id_pendaftaran = '".$_SESSION['id_pengunjung']."'");
+    $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, a.id_layanan, l.nama_layanan, a.status, p.asal_perusahaan, p.nama_pengunjung, pe.nama_produk, pe.jenis_produk FROM antrian a JOIN pendaftaran pe ON a.id_pendaftaran = pe.id_pendaftaran JOIN pengunjung p ON a.id_pendaftaran = p.id_pengunjung JOIN layanan l ON a.id_layanan = l.id_layanan WHERE a.id_pendaftaran = '".$_SESSION['id_pengunjung']."'");
     $fet = mysqli_fetch_array($query);
     $_SESSION['id_layanan'] = $fet['id_layanan'];
     $_SESSION['status_tahapan'] = $fet['status'];

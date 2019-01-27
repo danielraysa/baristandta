@@ -65,9 +65,6 @@
                 $('#nama_produk').val(data.nama);
                 $('#jenis_produk').val(data.jenis);
                 $('#jenis_sertifikasi').val(data.sertifikasi);
-                $('#id_pendaftaran').prop('disabled', true);
-                $('#jenis_produk').prop('disabled', true);
-                $('#jenis_sertifikasi').prop('disabled', true);
 			}
 		});
     });
@@ -87,9 +84,6 @@
                 $('#nama_produk').val(data.produk);
                 $('#jenis_produk').val(data.jenis);
                 $('#jenis_sertifikasi').val(data.sertifikasi);
-                $('#id_pendaftaran').prop('disabled', true);
-                $('#jenis_produk').prop('disabled', true);
-                $('#jenis_sertifikasi').prop('disabled', true);
 			}
 		});
     });

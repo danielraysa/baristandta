@@ -78,7 +78,7 @@
                     console.log(result);
                     var datanew = JSON.parse(result);
                     if (datanew.hasil === false) {
-                        alert("No data!");
+                        alert("Data pendaftaran tidak ada. Silahkan cek kembali");
                     }
                     $('#layanan').val(datanew.layanan);
                     $('#nama_perusahaan').val(datanew.nama);
@@ -104,7 +104,7 @@
                     console.log(result);
                     var datanew = JSON.parse(result);
                     if (datanew.hasil === false) {
-                        alert("No data!");
+                        alert("Data pendaftaran tidak ada. Silahkan cek kembali");
                     }
                     $('#namapengunjung').val(datanew.nama);
                     $('#nama_perusahaan').val(datanew.perusahaan);

@@ -88,7 +88,7 @@
                     //$('#hasil3').prop('disabled', true);
                 }
                 else {
-                    alert("No data!");
+                    alert("Data pendaftaran tidak ada. Silahkan cek kembali");
                     $('$id_pendaftaran').val("");
                 }
             }

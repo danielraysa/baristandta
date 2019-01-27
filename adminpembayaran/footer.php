@@ -104,15 +104,14 @@
                 console.log(result);
                 var datanew = JSON.parse(result);
                 if (datanew.hasil === false) {
-                    alert("No data!");
+                    alert("Data pendaftaran tidak ada. Silahkan cek kembali");
                 }
                 $('#nama_produk').val(datanew.nama);
                 $('#jenis_produk').val(datanew.jenis);
                 //$('select>option:eq(1)').attr('selected', true);
                 $('#nama_layanan').val(datanew.layanan);
                 $('#nama_perusahaan').val(datanew.perusahaan);
-                $('#jml_bayar').val(datanew.bayar);
-                //$('#nama_perusahaan').prop('disabled', true);
+                //$('#jml_bayar').val(datanew.bayar);
             }
         });
     });
@@ -120,8 +119,16 @@
     <script>
 	$('.modalLink').click(function(){
         var id = $(this).attr('data-id');
-		$('#idbayar').val(id);
-		console.log(this);
+		console.log(id);
+		$.ajax({
+			url:"modal-update.php",
+			cache:false,
+			type: "GET",
+			data: "ID="+id,
+			success:function(data){
+				$(".modal-content").html(data);
+			}
+		});
 	});
 	</script>
     <script>

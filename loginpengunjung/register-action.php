@@ -21,6 +21,7 @@
         $namaperusahaan = $_POST['namaperusahaan'];
         $date = date("Y-m-d");
         if ($jenisproduk == "") {
+            $_SESSION['error-msg'] = "Jenis produk must not blank!";
             header("location: index.php?error");
         }
         else {

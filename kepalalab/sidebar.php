@@ -42,7 +42,7 @@
                     }
                     ?>
                         <a href="index.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">today</i>
                             <span>Laporan Detail Antrian</span>
                         </a>
                     </li>
@@ -59,7 +59,7 @@
                     }
                     ?>
                         <a href="index.1.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">view_list</i>
                             <span>Laporan Layanan Sertifikasi</span>
                         </a>
                     </li>
@@ -76,7 +76,7 @@
                     }
                     ?>
                         <a href="index.2.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">assessment</i>
                             <span>Laporan Pemasukan dan Kinerja Petugas</span>
                         </a>
                     </li>
@@ -93,7 +93,7 @@
                     }
                     ?>
                         <a href="index.3.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">storage</i>
                             <span>Laporan Produk Sertifikasi</span>
                         </a>
                     </li>

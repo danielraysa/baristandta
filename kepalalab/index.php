@@ -43,7 +43,6 @@
                     <div class="card">
                         <div class="header">
                             
-                            </ul>
                         </div>
                         <div class="body">
                             <div class="table-responsive">
@@ -155,7 +154,7 @@
                                     <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" id="id_pendaftaran" name="id_pendaftaran" class="form-control" placeholder="ID Pendaftaran" readonly>
+                                                <input type="text" id="id_pendaftaran" name="id_pendaftaran" class="form-control" placeholder="ID Pendaftaran">
                                             </div>
                                         </div>
                                     </div>

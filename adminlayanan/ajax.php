@@ -8,9 +8,9 @@
         if (mysqli_num_rows($query) == 1) {
             $row = mysqli_fetch_array($query);
             
-            $nama = $row[1];
-            $layanan = $row[2];
-            $status = $row[3];
+            $nama = $row['asal_perusahaan'];
+            $layanan = $row['nama_layanan'];
+            $status = $row['status'];
 
             $myObj = array('hasil' => true, 'nama' => $nama, 'layanan' => $layanan, 'status' => $status);
         }
