@@ -227,15 +227,24 @@
                                         // add one second so that the count down starts at the full duration
                                         // example 05:00 not 04:59
                                         //start = Date.now() + 1000;
+                                        clearInterval(x);
+                                        swal({
+                                            title: "Timeout",
+                                            text: "Your time is out.",
+                                            type: "error",
+                                            timer: 2000,
+                                            showConfirmButton: false
+                                        });
+                                        $('#myModal').modal('show');
                                     }
                                 };
                                 // we don't want to wait a full second before the timer starts
                                 timer();
-                                setInterval(timer, 1000);
+                                var x = setInterval(timer, 1000);
                             }
 
                             window.onload = function () {
-                                var fiveMinutes = 60 * 0.05,
+                                var fiveMinutes = 60 * 15,
                                     display = document.querySelector('#time');
                                 startTimer(fiveMinutes, display);
                             };

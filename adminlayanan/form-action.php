@@ -27,7 +27,7 @@
                 }
             }
 
-            $insert = mysqli_query($koneksi, "INSERT INTO antrian (no_antrian, id_layanan, id_pendaftaran, masa_expired, status, approval) VALUES ('".$antrian."','".$namalayanan."','".$idpendaftaran."', ".$expired.", 'Tahap 1', 0)");
+            $insert = mysqli_query($koneksi, "INSERT INTO antrian (no_antrian, id_layanan, id_pendaftaran, masa_expired, status, approval, hapus_data) VALUES ('".$antrian."','".$namalayanan."','".$idpendaftaran."', ".$expired.", 'Tahap 1', 0, 0)");
             $update = mysqli_query($koneksi, "UPDATE pengunjung SET asal_perusahaan = '".$namaperusahaan."', nama_pengunjung = '".$namapengunjung."', jabatan = '".$jabatan."' WHERE id_pengunjung = '".$idpendaftaran."'");
 
             if($insert && $update) {
