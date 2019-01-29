@@ -1,7 +1,7 @@
 <?php
 include "../connection.php";
 $id = $_GET['ID'];
-$qu = mysqli_query($koneksi, "SELECT a.id_pendaftaran, a.id_layanan, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.status FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung WHERE a.id_pendaftaran = '".$id."'");
+$qu = mysqli_query($koneksi, "SELECT a.no_antrian, a.id_pendaftaran, a.id_layanan, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.status FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung WHERE a.id_pendaftaran = '".$id."'");
 $fet = mysqli_fetch_array($qu);
 
 ?>
@@ -18,6 +18,7 @@ $fet = mysqli_fetch_array($qu);
             <div class="form-group">
                 <div class="form-line">
                     <input type="text" name="id_pendaftaran" class="form-control" value="<?php echo $fet['id_pendaftaran']; ?>" placeholder="ID Pendaftaran" readonly>
+                    <input type="hidden" name="no_antrian" class="form-control" value="<?php echo $fet['no_antrian']; ?>">
                 </div>
             </div>
         </div>

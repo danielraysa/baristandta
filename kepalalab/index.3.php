@@ -42,7 +42,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-12">
                     <div class="card">
                         <div class="header">
-                           
+                            <h2>Data Produk Sertifikasi</h2>
+                            <a role="button" class="btn btn-success waves-effect" href="export-excel.php?produk" style="right: 50px; top: 15px; position: absolute;">Export Excel</a>
                         </div>
                         <div class="body">
                             <form>
@@ -61,7 +62,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        <th>ID Pendaftaran</th>
+                                            <th>ID Pendaftaran</th>
                                             <th>Asal Perusahaan</th>
                                             <th>Nama Produk</th>
                                             <th>Jenis Produk</th>

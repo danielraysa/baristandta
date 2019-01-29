@@ -50,7 +50,13 @@
         $namaperusahaan = mysqli_real_escape_string($koneksi, $_POST['nama_perusahaan']);
         $namaproduk = mysqli_real_escape_string($koneksi, $_POST['nama_produk']);
         $status = $_POST['status_sertifikasi'];
-    
+        $no_antrian = $_POST['no_antrian'];
+        if ($status == "Tahap 4") {
+            $cek = mysqli_query($koneksi, "SELECT * FROM produk WHERE id_produk = '".$no_antrian."'");
+            if (mysqli_num_rows($cek) == 0) {
+                $insert = mysqli_query($koneksi, "INSERT INTO produk (id_produk, no_antrian) VALUES ('".$no_antrian."', '".$no_antrian."')");
+            }
+        }
         $update = mysqli_query($koneksi, "UPDATE pendaftaran SET nama_produk = '".$namaproduk."' WHERE id_pendaftaran = '".$idpendaftaran."'");
         $update2 = mysqli_query($koneksi, "UPDATE pengunjung SET asal_perusahaan = '".$namaperusahaan."' WHERE id_pengunjung = '".$idpendaftaran."'");
         $update3 = mysqli_query($koneksi, "UPDATE antrian SET status = '".$status."' WHERE id_pendaftaran = '".$idpendaftaran."'");

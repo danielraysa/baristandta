@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2019 at 10:34 AM
+-- Generation Time: Jan 28, 2019 at 04:12 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -37,18 +37,19 @@ CREATE TABLE `antrian` (
   `nama_layanan` varchar(50) NOT NULL,
   `masa_expired` int(11) NOT NULL,
   `status` varchar(50) NOT NULL,
-  `approval` int(11) NOT NULL
+  `approval` int(11) NOT NULL,
+  `hapus_data` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `antrian`
 --
 
-INSERT INTO `antrian` (`no_antrian`, `id_layanan`, `id_pendaftaran`, `nama_produk`, `jenis_produk`, `nama_layanan`, `masa_expired`, `status`, `approval`) VALUES
-('1288511894', 'LYN002', 'bxyMC50dFh', '', '', '', 100, 'Tahap 1', 0),
-('1457655291', 'LYN001', '7NSZ8VdXTU', '', '', '', 40, 'Tahap 3', 1),
-('1858539206', 'LYN002', 'qLtfHKxArq', '', '', '', 70, 'Tahap 1', 0),
-('3112180001', 'LYN001', 'gmFhJd2t0N', 'Ciki', 'Makanan/Minuman', 'Layanan Pengaduan', 60, 'Tahap 2', 1);
+INSERT INTO `antrian` (`no_antrian`, `id_layanan`, `id_pendaftaran`, `nama_produk`, `jenis_produk`, `nama_layanan`, `masa_expired`, `status`, `approval`, `hapus_data`) VALUES
+('1288511894', 'LYN002', 'bxyMC50dFh', '', '', '', 100, 'Tahap 1', 0, 0),
+('1457655291', 'LYN001', '7NSZ8VdXTU', '', '', '', 40, 'Tahap 3', 1, 0),
+('1858539206', 'LYN002', 'qLtfHKxArq', '', '', '', 70, 'Tahap 1', 1, 0),
+('3112180001', 'LYN001', 'gmFhJd2t0N', 'Ciki', 'Makanan/Minuman', 'Layanan Pengaduan', 60, 'Tahap 2', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -98,7 +99,8 @@ INSERT INTO `kinerja` (`id_kinerja`, `id_pegawai`, `angka_rating`, `keterangan`)
 (8, 'LKT003', 4, ''),
 (9, 'LKT003', 5, 'Baik'),
 (10, 'LKT003', 4, ''),
-(11, 'LKT002', 4, '');
+(11, 'LKT002', 4, ''),
+(12, 'LKT002', 5, '');
 
 -- --------------------------------------------------------
 
@@ -201,8 +203,8 @@ CREATE TABLE `pembayaran` (
 --
 
 INSERT INTO `pembayaran` (`id_bayar`, `id_pendaftaran`, `total_bayar`, `tanggal_bayar`, `status_bayar`) VALUES
-(1, 'gmFhJd2t0N', 100000, '2019-01-24 02:19:37', 1),
-(3, '7NSZ8VdXTU', 100000, '2019-01-24 02:39:52', 1);
+(1, 'gmFhJd2t0N', 115000, '2019-01-24 02:19:37', 1),
+(3, '7NSZ8VdXTU', 115000, '2019-01-24 02:39:52', 1);
 
 -- --------------------------------------------------------
 
@@ -227,7 +229,7 @@ CREATE TABLE `pendaftaran` (
 INSERT INTO `pendaftaran` (`id_pendaftaran`, `id_loket`, `id_pegawai`, `jenis_produk`, `nama_produk`, `tanggal_penyerahan`, `tanggal_pendaftaran`) VALUES
 ('7NSZ8VdXTU', '', '', 'Makanan/Minuman', 'Jajancoklat', '2019-01-24', '2019-01-17'),
 ('bxyMC50dFh', '', '', 'Non Makanan/Minuman', 'Pipa Karbon', '2019-01-31', '2019-01-25'),
-('gmFhJd2t0N', 'LKT001', '', 'Makanan/Minuman', 'Ciki', '2019-01-17', '2018-12-27'),
+('gmFhJd2t0N', 'LKT001', '', 'Makanan/Minuman', 'Ciki Tos', '2019-01-17', '2018-12-27'),
 ('qLtfHKxArq', '', '', 'Non Makanan/Minuman', 'Tali Rafia', '2019-01-31', '2019-01-25');
 
 -- --------------------------------------------------------
@@ -354,7 +356,7 @@ ALTER TABLE `keluhan`
 -- AUTO_INCREMENT for table `kinerja`
 --
 ALTER TABLE `kinerja`
-  MODIFY `id_kinerja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_kinerja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`

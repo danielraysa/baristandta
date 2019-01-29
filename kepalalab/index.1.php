@@ -48,7 +48,7 @@
                         <div class="body">
                             <form class="form-horizontal">
                                 <div class="row">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
                                         <label for="email_address_2">Layanan Paling Banyak Dipilih</label>
                                     </div>
                                     <?php
@@ -62,12 +62,15 @@
                                         }
                                     }
                                     ?>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="col-lg-6 col-md-6 col-sm-5 col-xs-5">
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="text" id="email_address_2" class="form-control" value="<?php echo $namalayanan; ?>" placeholder="" disabled>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                        <a role="button" class="btn btn-success waves-effect" href="export-excel.php?layanan">Export Excel</a>
                                     </div>
                                 </div>
                                 
