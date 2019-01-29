@@ -14,7 +14,6 @@
     <td><b>No</b></td>
 	<td><b>ID Pendaftaran</td>
     <td><b>Nama Perusahaan</b></td>
-    <td><b>Nama Pengunjung</b></td>
     <td><b>Nama Produk</b></td>
     <td><b>Jenis Produk</b></td>
     <td><b>Jenis Sertifikasi</b></td>
@@ -27,7 +26,6 @@
     <td>".$a."</td>
 	<td>".$row['id_pendaftaran']."</td>
 	<td>".$row['asal_perusahaan']."</td>
-	<td>".$row['nama_pengunjung']."</td>
     <td>".$row['nama_produk']."</td>
     <td>".$row['jenis_produk']."</td>
     <td>".$row['nama_layanan'] ."</td>
