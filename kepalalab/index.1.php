@@ -24,7 +24,7 @@
             ?>
             <div class="alert bg-green alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <b>Success!</b> Data berhasil ditambahkan
+                <?php echo $_SESSION['success-msg']; ?>
             </div>
             <?php
                 }
@@ -69,9 +69,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!--
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                         <a role="button" class="btn btn-success waves-effect" href="export-excel.php?layanan">Export Excel</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 
                                 <div class="table-responsive">

@@ -16,11 +16,11 @@
         
         if($update && $update2) {
             $_SESSION['success-msg'] = "<b>Success!</b> Berhasil update data";
-            //header("location: ../kepalalab/index.php?success");
+            header("location: ../kepalalab/index.php?success");
         }
         else {
             $_SESSION['error-msg'] = mysqli_error($koneksi);
-            //header("location: ../kepalalab/index.php?error");
+            header("location: ../kepalalab/index.php?error");
         }
     }
 
@@ -32,7 +32,8 @@
         $update2 = mysqli_query($koneksi, "UPDATE pengunjung SET asal_perusahaan = '".$namaperusahaan."' WHERE id_pengunjung = '".$idpendaftaran."'");
         
         if($update && $update2) {
-        header("location: ../kepalalab/index.1.php?success");
+            $_SESSION['success-msg'] = "<b>Success!</b> Berhasil update data";
+            header("location: ../kepalalab/index.1.php?success");
         }
         else {
             $_SESSION['error-msg'] = mysqli_error($koneksi);
@@ -64,6 +65,19 @@
         else {
             $_SESSION['error-msg'] = mysqli_error($koneksi);
             header("location: ../kepalalab/index.1.php?error");
+        }
+    }
+    if(isset($_POST['delete-produk'])) {
+        $idpendaftaran = $_POST['id_pendaftaran'];
+        $update = mysqli_query($koneksi, "UPDATE antrian SET hapus_data = 1 WHERE id_pendaftaran = '".$idpendaftaran."'");
+        //$delete = mysqli_query($koneksi, "DELETE FROM antrian WHERE id_pendaftaran = '".$idpendaftaran."'");
+        if($update) {
+            $_SESSION['success-msg'] = "<b>Success!</b> Berhasil menghapus data";
+            header("location: ../kepalalab/index.3.php?success");
+        }
+        else {
+            $_SESSION['error-msg'] = mysqli_error($koneksi);
+            header("location: ../kepalalab/index.3.php?error");
         }
     }
     if(isset($_POST['approve'])) {

@@ -24,7 +24,7 @@
             ?>
             <div class="alert bg-green alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <b>Success!</b> Data berhasil ditambahkan
+                <?php echo $_SESSION['success-msg']; ?>
             </div>
             <?php
                 }
@@ -53,6 +53,8 @@
                                         <tr>
                                             <th>ID Pendaftaran</th>
                                             <th>Asal Perusahaan</th>
+                                            <th>Nama Pengunjung</th>
+                                            <th>Jabatan</th>
                                             <th>Nama Produk</th>
                                             <th>Jenis Produk</th>
                                             <th>Jenis Sertifikasi</th>
@@ -64,6 +66,8 @@
                                         <tr>
                                             <th>ID Pendaftaran</th>
                                             <th>Asal Perusahaan</th>
+                                            <th>Nama Pengunjung</th>
+                                            <th>Jabatan</th>
                                             <th>Nama Produk</th>
                                             <th>Jenis Produk</th>
                                             <th>Jenis Sertifikasi</th>
@@ -73,19 +77,21 @@
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung WHERE a.status = 'Tahap 4'");
+                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p1.nama_pengunjung, p1.jabatan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung WHERE a.status = 'Tahap 4' AND a.hapus_data = 0");
                                         while ($row = mysqli_fetch_array($query)) {
                                     ?>
                                         <tr>
                                             <td><?php echo $row['id_pendaftaran']; ?></td>
                                             <td><?php echo $row['asal_perusahaan']; ?></td>
+                                            <td><?php echo $row['nama_pengunjung']; ?></td>
+                                            <td><?php echo $row['jabatan']; ?></td>
                                             <td><?php echo $row['nama_produk']; ?></td>
                                             <td><?php echo $row['jenis_produk']; ?></td>
                                             <td><?php echo $row['nama_layanan']; ?></td>
                                             <td><?php echo $row['masa_expired']; ?> hari</td>
                                             <td>
                                             <button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" >Update</button>
-                                            <button class="btn btn-danger waves-effect">Delete</button>
+                                            <button type="button" name="delete" class="btn btn-danger waves-effect btnDelete" data-toggle="modal" data-target="#myModalDelete" data-id="<?php echo $row['id_pendaftaran']; ?>" >Delete</button>
                                             </td>
                                         </tr>
                                     <?php
@@ -189,7 +195,7 @@
                                 <input type="hidden" id="idpendaftaran" name="id_pendaftaran" value=""/>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-link waves-effect" type="submit" name="delete-layanan">Hapus</button>
+                                <button class="btn btn-link waves-effect" type="submit" name="delete-produk">Hapus</button>
                                 <button class="btn btn-link waves-effect" type="button" data-dismiss="modal">Cancel</button>
                             </div>
                         </form>

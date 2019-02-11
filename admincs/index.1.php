@@ -48,17 +48,17 @@
                             <form>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="nama_pengunjung" class="form-control" placeholder="Nama Pengunjung" />
+                                    <input type="text" id="nama_pengunjung" class="form-control" placeholder="Nama Pengunjung" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="asal_perusahaan" class="form-control" placeholder="Asal Perusahaan" />
+                                    <input type="text" id="asal_perusahaan" class="form-control" placeholder="Asal Perusahaan" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea rows="4" id="data_keluhan"  class="form-control no-resize" placeholder="Tuliskan Keluhan/ Pertanyaan Pengunjung..."></textarea>
+                                    <textarea rows="4" id="data_keluhan"  class="form-control no-resize" placeholder="Tuliskan Keluhan/ Pertanyaan Pengunjung..." required></textarea>
                                 </div>
                             </div>
 

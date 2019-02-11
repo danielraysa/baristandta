@@ -100,17 +100,24 @@
         var var_nama = $('#nama_pengunjung').val();
         var var_perusahaan = $('#asal_perusahaan').val();
         var var_keluhan = $('#data_keluhan').val();
-        e.preventDefault(); 
-        $.ajax({
-            url:"ajax-keluhan.php",
-            type:"POST",
-            data: {nama: var_nama, perusahaan: var_perusahaan, keluhan: var_keluhan},
-            //data : "{'nama': "+nama+", 'perusahaan': "+perusahaan+", 'keluhan': "+keluhan+"}",
-            success : function() {
-                alert("Berhasil menyimpan data keluhan");
-                $('#myModal').modal('toggle');
-            }
-        });
+        e.preventDefault();
+        if (!$('#nama_pengunjung').val() || !$('#asal_perusahaan').val() || !$('#data_keluhan').val()) {
+            alert("Data tidak boleh ada yg kosong");
+            console.log(e);
+        }
+        
+        else {
+            $.ajax({
+                url:"ajax-keluhan.php",
+                type:"POST",
+                data: {nama: var_nama, perusahaan: var_perusahaan, keluhan: var_keluhan},
+                //data : "{'nama': "+nama+", 'perusahaan': "+perusahaan+", 'keluhan': "+keluhan+"}",
+                success : function() {
+                    alert("Berhasil menyimpan data keluhan");
+                    $('#myModal').modal('toggle');
+                }
+            });
+        } 
     });
     </script>
     <script>
