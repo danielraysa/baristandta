@@ -54,6 +54,7 @@
                                             <th>Asal Perusahaan</th>
                                             <th>Nama Produk</th>
                                             <th>Jenis Produk</th>
+                                            <th>Tanggal Pendaftaran</th>
                                             <th>Tanggal Penyerahan</th>
                                             <th>Nama Pengunjung</th>
                                             <th>Tindakan</th>
