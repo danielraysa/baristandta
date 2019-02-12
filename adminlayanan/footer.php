@@ -53,7 +53,7 @@
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
     <script src="../js/pages/ui/dialogs.js"></script>
-    <script src="../js/pages/tables/jquery-datatable.js"></script>
+    <!-- <script src="../js/pages/tables/jquery-datatable.js"></script> -->
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
@@ -108,6 +108,7 @@
                     }
                     $('#namapengunjung').val(datanew.nama);
                     $('#nama_perusahaan').val(datanew.perusahaan);
+                    $('#nama_layanan').val(datanew.jenis);
                     //$('#nama_perusahaan').prop('disabled', true);
                     
                 }
@@ -177,6 +178,13 @@
                 window.location = "../logout.php";
             });
         });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('#dataTable1').DataTable( {
+            "order": [[ 6, "asc" ]]
+        } );
+    } );
     </script>
 </body>
 

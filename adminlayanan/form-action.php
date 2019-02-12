@@ -51,10 +51,11 @@
         $namaproduk = mysqli_real_escape_string($koneksi, $_POST['nama_produk']);
         $status = $_POST['status_sertifikasi'];
         $no_antrian = $_POST['no_antrian'];
+        $date = date('Y-m-d');
         if ($status == "Tahap 4") {
             $cek = mysqli_query($koneksi, "SELECT * FROM produk WHERE id_produk = '".$no_antrian."'");
             if (mysqli_num_rows($cek) == 0) {
-                $insert = mysqli_query($koneksi, "INSERT INTO produk (id_produk, no_antrian) VALUES ('".$no_antrian."', '".$no_antrian."')");
+                $insert = mysqli_query($koneksi, "INSERT INTO produk (id_produk, no_antrian, tanggal_sertifikasi) VALUES ('".$no_antrian."', '".$no_antrian."','".$date."')");
             }
         }
         $update = mysqli_query($koneksi, "UPDATE pendaftaran SET nama_produk = '".$namaproduk."' WHERE id_pendaftaran = '".$idpendaftaran."'");

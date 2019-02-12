@@ -15,6 +15,24 @@
             header("location: ../pengunjung");
         }
         else {
+            $query_admin = mysqli_query($koneksi, "SELECT p.id_pegawai, p.nama_pegawai, p.id_loket, l.jenis_loket FROM pegawai p JOIN loket l ON p.id_loket = l.id_loket WHERE p.id_pegawai = '".$username."'");
+            if (mysqli_num_rows($query_admin) == 1 && $password == "12345"){
+                $row = mysqli_fetch_array($query_admin);
+                $_SESSION['id_pegawai'] = $username;
+                $_SESSION['loket'] = $row['id_loket'];
+                $_SESSION['jenis_loket'] = $row['jenis_loket'];
+                $_SESSION['nama_pegawai'] = $row['nama_pegawai'];
+                if($_SESSION['loket'] == "LKT001") {
+                    header("location: ../admincs");    
+                }
+                if($_SESSION['loket'] == "LKT002") {
+                    header("location: ../adminlayanan");
+                }
+                if($_SESSION['loket'] == "LKT003") {
+                    header("location: ../adminpembayaran");
+                }
+            }
+            /*
             if ($username == "Admin001" && $password == "12345") {
             //$_SESSION['username'] = $username;
                 header("location: ../admincs");
@@ -31,10 +49,12 @@
                 //$_SESSION['username'] = $username;
                     header("location: ../labsertifikasi");
                 }
-            else if ($username == "Kepala001" && $password == "12345") {
+            */
+            else if ($username == "kepalalab" && $password == "12345") {
                 //$_SESSION['username'] = $username;
                 header("location: ../kepalalab");
             }
+            
             else {
                 $_SESSION['error-msg'] = "Username/password salah, silahkan cek kembali";
                 header("location: ../loginpengunjung/?error");

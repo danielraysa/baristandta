@@ -77,7 +77,7 @@
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status, a.approval FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung WHERE a.hapus_data = 0");
+                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status, a.approval FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung WHERE a.approval = 0 AND a.hapus_data = 0");
                                         while ($row = mysqli_fetch_array($query)) {
                                     ?>
                                         <tr>
@@ -115,7 +115,97 @@
                                             <?php
                                             if ($row['approval'] == 1) {
                                                 ?>
-                                                <button class="btn btn-success waves-effect" disabled>Approve</button>
+                                                <button class="btn btn-primary waves-effect" disabled>Approve</button>
+                                                <?php
+                                            }
+                                            else {
+                                               ?>
+                                                <button class="btn btn-success waves-effect btnApprove" data-toggle="modal" data-target="#myModalApprove" data-id="<?php echo $row['id_pendaftaran']; ?>">Approve</button>
+                                               <?php
+                                            }
+                                            ?>
+                                            <button type="button" name="update" class="btn btn-warning waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>">Update</button>
+                                            <button class="btn btn-danger waves-effect btnDelete" data-toggle="modal" data-target="#myModalDelete" data-id="<?php echo $row['id_pendaftaran']; ?>" >Delete</button>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                        }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h2>Approved</h2>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>ID Pendaftaran</th>
+                                            <th>Asal Perusahaan</th>
+                                            <th>Nama Produk</th>
+                                            <th>Jenis Produk</th>
+                                            <th>Jenis Sertifikasi</th>
+                                            <th>Masa Expired</th>
+                                            <th>Prioritas</th>
+                                            <th>Status Sertifikasi</th>
+                                            <th>Status Approval</th>
+                                            <th>Tindakan</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID Pendaftaran</th>
+                                            <th>Asal Perusahaan</th>
+                                            <th>Nama Produk</th>
+                                            <th>Jenis Produk</th>
+                                            <th>Jenis Sertifikasi</th>
+                                            <th>Masa Expired</th>
+                                            <th>Prioritas</th>
+                                            <th>Status Sertifikasi</th>
+                                            <th>Status Approval</th>
+                                            <th>Tindakan</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <?php
+                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status, a.approval FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung WHERE a.approval = 1 AND a.hapus_data = 0");
+                                        while ($row = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $row['id_pendaftaran']; ?></td>
+                                            <td><?php echo $row['asal_perusahaan']; ?></td>
+                                            <td><?php echo $row['nama_produk']; ?></td>
+                                            <td><?php echo $row['jenis_produk']; ?></td>
+                                            <td><?php echo $row['nama_layanan']; ?></td>
+                                            <td><?php echo $row['masa_expired']; ?> hari</td>
+                                            <td>
+                                            <?php
+                                            if ($row['masa_expired'] <= 10) {
+                                                echo "High Priority";
+                                            }
+                                            else if ($row['masa_expired'] > 10 && $row['masa_expired'] <= 30) {
+                                                echo "Medium Priority";
+                                            }
+                                            else {
+                                                echo "Low Priority";
+                                            }
+                                            ?>
+                                            </td>
+                                            <td><?php echo $row['status']; ?></td>
+                                            <td>
+                                            <?php
+                                            if ($row['approval'] == 1) {
+                                                echo "Approved";
+                                            }
+                                            else {
+                                                echo "Waiting";
+                                            }
+                                            ?>
+                                            </td>
+                                            <td>
+                                            <?php
+                                            if ($row['approval'] == 1) {
+                                                ?>
+                                                <button class="btn btn-primary waves-effect" disabled>Approve</button>
                                                 <?php
                                             }
                                             else {

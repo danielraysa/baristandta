@@ -112,7 +112,6 @@
                                             <?php
                                             }
                                             ?>
-                                            <!--<option value="Sertifikasi Non Makanan/Minuman">Sertifikasi Non Makanan/Minuman</option>-->
                                         </select>
                                     </div>
                                 </div>

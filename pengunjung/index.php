@@ -158,7 +158,30 @@
                                         </div>
                                     </div>
                                 </div>
-                            
+                                <?php
+                                $data = mysqli_query($koneksi,"SELECT a.id_pendaftaran, p.tanggal_sertifikasi FROM antrian a JOIN produk p ON p.no_antrian = a.no_antrian WHERE a.id_pendaftaran = '".$_SESSION['id_pengunjung']."'");
+                                if(mysqli_num_rows($data) == 1) {
+                                    $baris = mysqli_fetch_array($data);
+                                    setlocale(LC_TIME, "id_ID");
+                                    date_default_timezone_set("Asia/Jakarta");
+                                    $date = $baris['tanggal_sertifikasi'];
+                                    $newdate = date('d F Y', strtotime("$date +1 day"));
+                                ?>
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="password_2"> Tanggal Sertifikasi untuk diambil</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" id="tanggal_sertifikasi" name="tanggal_sertifikasi" value="<?php echo $newdate; ?>" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                                }
+                                ?>
                         </div>
                     </div>
                 </div>

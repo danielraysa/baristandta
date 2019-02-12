@@ -59,6 +59,8 @@
                                             <th>Jenis Produk</th>
                                             <th>Jenis Sertifikasi</th>
                                             <th>Masa Expired</th>
+                                            <th>Tanggal Penyerahan</th>
+                                            <th>Tanggal Sertifikasi</th>
                                             <th>Tindakan</th>
                                         </tr>
                                     </thead>
@@ -72,12 +74,14 @@
                                             <th>Jenis Produk</th>
                                             <th>Jenis Sertifikasi</th>
                                             <th>Masa Expired</th>
+                                            <th>Tanggal Penyerahan</th>
+                                            <th>Tanggal Sertifikasi</th>
                                             <th>Tindakan</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p1.nama_pengunjung, p1.jabatan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung WHERE a.status = 'Tahap 4' AND a.hapus_data = 0");
+                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p1.nama_pengunjung, p1.jabatan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status, p.tanggal_penyerahan, pr.tanggal_sertifikasi FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung JOIN produk pr ON a.no_antrian = pr.no_antrian WHERE a.status = 'Tahap 4' AND a.hapus_data = 0");
                                         while ($row = mysqli_fetch_array($query)) {
                                     ?>
                                         <tr>
@@ -89,6 +93,8 @@
                                             <td><?php echo $row['jenis_produk']; ?></td>
                                             <td><?php echo $row['nama_layanan']; ?></td>
                                             <td><?php echo $row['masa_expired']; ?> hari</td>
+                                            <td><?php echo $row['tanggal_penyerahan']; ?></td>
+                                            <td><?php echo $row['tanggal_sertifikasi']; ?></td>
                                             <td>
                                             <button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" >Update</button>
                                             <button type="button" name="delete" class="btn btn-danger waves-effect btnDelete" data-toggle="modal" data-target="#myModalDelete" data-id="<?php echo $row['id_pendaftaran']; ?>" >Delete</button>

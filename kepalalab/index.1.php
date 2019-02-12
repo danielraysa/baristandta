@@ -69,10 +69,26 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--
+                                    
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                        <a role="button" class="btn btn-success waves-effect" href="export-excel.php?layanan">Export Excel</a>
-                                    </div> -->
+                                        <!-- <a role="button" class="btn btn-success waves-effect" href="export-excel.php?layanan">Export Excel</a> -->
+                                        <div class="btn-group">
+                                            <button type="button" class="btn bg-teal dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Export Excel <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <?php 
+                                                    $abc = mysqli_query($koneksi, "SELECT * FROM layanan");
+                                                    while($row = mysqli_fetch_array($abc)) {
+                                                ?>
+                                                <li><a href="export-excel.php?layanan=<?php echo $row['id_layanan']; ?>" class=" waves-effect waves-block"><?php echo $row['nama_layanan']; ?></a></li>
+                                                <?php
+                                                    }
+                                                ?>
+                                                <li><a href="export-excel.php?layanan=all" class=" waves-effect waves-block">Semua</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                                 <div class="table-responsive">

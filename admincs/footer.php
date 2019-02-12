@@ -83,13 +83,18 @@
                     $('#hasil1').val(datanew.asal);
                     $('#hasil2').val(datanew.nama);
                     $('#hasil3').val(datanew.jenis);
+                    $('#tanggal').val(datanew.tanggal);
                     //$('#hasil1').prop('disabled', true);
                     //$('#hasil2').prop('disabled', true);
                     //$('#hasil3').prop('disabled', true);
                 }
                 else {
                     alert("Data pendaftaran tidak ada. Silahkan cek kembali");
-                    $('$id_pendaftaran').val("");
+                    $('#id_pendaftaran').val("");
+                    $('#hasil1').val("");
+                    $('#hasil2').val("");
+                    $('#hasil3').val("");
+                    $('#tanggal').val("");
                 }
             }
         });
@@ -105,7 +110,6 @@
             alert("Data tidak boleh ada yg kosong");
             console.log(e);
         }
-        
         else {
             $.ajax({
                 url:"ajax-keluhan.php",

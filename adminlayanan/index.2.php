@@ -47,7 +47,7 @@
                         <div class="body">
                             <form>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <table id="dataTable1" class="table table-bordered table-striped table-hover js-basic-example">
                                     <thead>
                                         <tr>
                                             <th>ID Pendaftaran</th>

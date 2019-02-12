@@ -1,16 +1,26 @@
 <?php
     session_start();
     include "../connection.php";
-    
+    date_default_timezone_set("Asia/Jakarta");
     $output = "";
 	// untuk tulisan bercetak tebal silakan sesuaikan dengan detail database Anda
 	// membuat koneksi
 	//$koneksi = mysqli_koneksiect($servername, $username, $password, $database);
 	//Akhir koneksi
-	$query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p1.nama_pengunjung, p.nama_produk, l.nama_layanan FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung WHERE a.hapus_data = 0");
-	
+	if($_GET['layanan'] == "all") {
+		$query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p1.nama_pengunjung, p.nama_produk, l.nama_layanan FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung WHERE a.hapus_data = 0");
+	}
+	else {
+		$query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p1.nama_pengunjung, p.nama_produk, l.nama_layanan FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung WHERE a.id_layanan = '".$_GET['layanan']."' AND a.hapus_data = 0");
+	}
     $output .= "
-	<table border='1'>  
+	<table border='1'>
+	<tr>
+	<td colspan='6'><center><b>LAPORAN LAYANAN SERTIFIKASI</b></center></td>
+	</tr>  
+	<tr>
+	<td colspan='6'>Tanggal: ".date('d F Y')."</b></td>
+	</tr>  
 	<tr>
 	<td><b>No</b></td>
 	<td><b>ID Pendaftaran</b></td>

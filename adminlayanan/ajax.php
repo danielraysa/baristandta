@@ -22,16 +22,23 @@
     if (isset($_GET['id_daftar'])) {
         $q = mysqli_real_escape_string($koneksi, $_GET['id_daftar']);
 
-        $query = mysqli_query($koneksi, "SELECT p1.id_pendaftaran, p2.asal_perusahaan, p2.nama_pengunjung from pendaftaran p1 JOIN pengunjung p2 ON p1.id_pendaftaran = p2.id_pengunjung WHERE p1.id_pendaftaran = '".$q."'");
+        $query = mysqli_query($koneksi, "SELECT p1.id_pendaftaran, p1.jenis_produk, p2.asal_perusahaan, p2.nama_pengunjung from pendaftaran p1 JOIN pengunjung p2 ON p1.id_pendaftaran = p2.id_pengunjung WHERE p1.id_pendaftaran = '".$q."'");
         if (mysqli_num_rows($query) == 1) {
             $row = mysqli_fetch_array($query);
-            $perusahaan = $row[1];
-            $nama = $row[2];
+            $perusahaan = $row['asal_perusahaan'];
+            $produk = "";
+            if($row['jenis_produk'] == "Makanan/Minuman") {
+                $produk = "LYN001";
+            }
+            else {
+                $produk = "LYN002";
+            }
+            $nama = $row['nama_pengunjung'];
 
-            $myObj = array('hasil' => true, 'perusahaan' => $perusahaan, 'nama' => $nama);
+            $myObj = array('hasil' => true, 'perusahaan' => $perusahaan, 'nama' => $nama, 'jenis' => $produk);
         }
         else {
-            $myObj = array('hasil' => false, 'perusahaan' => "-", 'nama' => "-");
+            $myObj = array('hasil' => false, 'perusahaan' => "-", 'nama' => "-", 'jenis' => "");
         }
     }   
     $myJSON = json_encode($myObj);
