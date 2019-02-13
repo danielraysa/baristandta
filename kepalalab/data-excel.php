@@ -1,7 +1,9 @@
 <?php
     session_start();
     include "../connection.php";
-    date_default_timezone_set("Asia/Jakarta");
+	date_default_timezone_set("Asia/Jakarta");
+	setlocale (LC_TIME, 'INDONESIAN');
+	$date = strftime("%d %B %Y", time());
     $output = "";
 	// untuk tulisan bercetak tebal silakan sesuaikan dengan detail database Anda
 	// membuat koneksi
@@ -19,7 +21,7 @@
 	<td colspan='6'><center><b>LAPORAN LAYANAN SERTIFIKASI</b></center></td>
 	</tr>  
 	<tr>
-	<td colspan='6'>Tanggal: ".date('d F Y')."</b></td>
+	<td colspan='6'>Tanggal: ".$date."</b></td>
 	</tr>  
 	<tr>
 	<td><b>No</b></td>

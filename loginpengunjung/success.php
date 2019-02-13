@@ -1,6 +1,8 @@
 
 <?php
   session_start();
+  setlocale (LC_TIME, 'INDONESIAN');
+  date_default_timezone_set("Asia/Jakarta");
 ?>
 <html>
 <head>
@@ -29,7 +31,7 @@
       <input type="text" class="fadeIn second" value="<?php echo $_SESSION['temp_id']; ?>" readonly>
       <br>
       Come back again at
-      <input type="text" class="fadeIn second" name="username" value="<?php date_default_timezone_set("Asia/Jakarta"); echo Date('d F Y', strtotime("+7 days")); ?>" readonly>
+      <input type="text" class="fadeIn second" name="username" value="<?php echo strftime("%d %B %Y", strtotime("+7 days")); ?>" readonly>
       <BR>
       <!--<input type="submit" class="fadeIn fourth" name="login" value="Return">-->
       <a href="index.php" type="button" class="fadeIn third">Return to Login</a>

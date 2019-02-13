@@ -43,7 +43,7 @@
                     <div class="card">
                         
                         <div class="body">
-                            <form method="post" action="form-action.php">
+                            <!-- <form method="post" action="form-action.php"> -->
                                 <div class="row">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-3 form-control-label">
                                         <label for="email_address_2">ID Pendaftaran</label>
@@ -78,7 +78,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="tanggal_penyerahan" id="email_address_2" class="form-control datepicker" placeholder="Tanggal Penyerahan" required>
+                                                <input type="text" name="tanggal_penyerahan" id="tanggal_penyerahan" class="form-control datepicker" placeholder="Tanggal Penyerahan" required>
                                             </div>
                                         </div>
                                     </div>
@@ -128,17 +128,18 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="nama_pengunjung" id="email_address_2" class="form-control" placeholder="Nama Pengunjung" required>
+                                                <input type="text" name="nama_pengunjung" id="nama_pengunjung" class="form-control" placeholder="Nama Pengunjung" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             <center>
                             <div class="form-group">
-                                <button type="submit" name="simpan" class="btn btn-primary btn-lg waves-effect" style="width: 500px;">Simpan</button>
+                                <!-- <button type="submit" id="simpan_cetak" name="simpan" class="btn btn-primary btn-lg waves-effect" style="width: 500px;">Simpan</button> -->
+                                <button type="button" id="simpan_cetak" name="simpan" class="btn btn-primary btn-lg waves-effect" style="width: 500px;">Simpan</button>
                             </div>
                             </center>
-                            </form>
+                            <!-- </form> -->
                         </div>
                     </div>
                 </div>

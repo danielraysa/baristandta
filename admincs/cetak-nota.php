@@ -1,0 +1,37 @@
+<?php
+session_start();
+use setasign\Fpdi\Fpdi;
+use setasign\fpdf;
+require_once('../plugins/fpdf/fpdf.php');
+// require_once('../module/fpdi/src/Fpdi.php');
+// require_once('../module/fpdi/src/FpdfTpl.php');
+require_once('../plugins/fpdi/src/autoload.php');
+//require_once('../module/fpdi/src/FpdiTrait.php');
+//use setasign\Fpdi\TcpdfFpdi;
+//use setasign\Fpdi\PdfReader;
+include '../connection.php';
+$pdf = new setasign\Fpdi\Fpdi();
+$pageCount = $pdf->setSourceFile('nota.pdf');
+$pageId = $pdf->importPage(1);
+$pdf->addPage();
+$pdf->useImportedPage($pageId, 0, 0);
+$pdf->SetTitle('Bukti Penyerahan');
+setlocale (LC_TIME, 'INDONESIAN');
+//$id = $_GET['id'];
+$query = mysqli_query($koneksi, $_SESSION['kirim_query']);
+$row = mysqli_fetch_array($query);
+$tanggalpenyerahan = strftime("%d %B %Y", strtotime($row['tanggal_penyerahan']));
+$date = $row['tanggal_pendaftaran'];
+$newdate = date('Y-m-d', strtotime("$date +7 day"));
+$tanggaldatang = strftime("%d %B %Y", strtotime($newdate));
+$pdf->SetFont('Times','B',14);
+$pdf->Text(100, 62.5, $row['id_pendaftaran']);
+$pdf->SetFont('Times','',12);
+$pdf->Text(100, 68.5, $tanggaldatang);
+$pdf->Text(100, 74.5, $tanggalpenyerahan);
+$pdf->Text(100, 80, $row['asal_perusahaan']);
+$pdf->Text(100, 86, $row['nama_produk']);
+$pdf->Text(100, 92, $row['jenis_produk']);
+$pdf->Text(100, 96.5, $row['nama_pengunjung']);
+$pdf->Output('I', 'BUKTI_PENDAFTARAN.pdf');
+?>
