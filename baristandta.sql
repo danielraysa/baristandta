@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2019 at 04:12 AM
+-- Generation Time: Feb 15, 2019 at 09:07 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -47,9 +47,9 @@ CREATE TABLE `antrian` (
 
 INSERT INTO `antrian` (`no_antrian`, `id_layanan`, `id_pendaftaran`, `nama_produk`, `jenis_produk`, `nama_layanan`, `masa_expired`, `status`, `approval`, `hapus_data`) VALUES
 ('1288511894', 'LYN002', 'bxyMC50dFh', '', '', '', 100, 'Tahap 1', 0, 0),
-('1457655291', 'LYN001', '7NSZ8VdXTU', '', '', '', 40, 'Tahap 3', 1, 0),
+('1457655291', 'LYN001', '7NSZ8VdXTU', '', '', '', 40, 'Tahap 4', 1, 0),
 ('1858539206', 'LYN002', 'qLtfHKxArq', '', '', '', 70, 'Tahap 1', 1, 0),
-('3112180001', 'LYN001', 'gmFhJd2t0N', 'Ciki', 'Makanan/Minuman', 'Layanan Pengaduan', 60, 'Tahap 2', 1, 0);
+('3112180001', 'LYN001', 'gmFhJd2t0N', 'Ciki', 'Makanan/Minuman', 'Layanan Pengaduan', 60, 'Tahap 4', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -159,9 +159,9 @@ CREATE TABLE `loket` (
 --
 
 INSERT INTO `loket` (`id_loket`, `id_layanan`, `jenis_loket`) VALUES
-('LKT001', 'LYN001', 'Loket Admin CS'),
-('LKT002', 'LYN001', 'Loket Admin Layanan'),
-('LKT003', 'LYN001', 'Loket Pembayaran');
+('LKT001', 'LYN001', 'Customer Service'),
+('LKT002', 'LYN001', 'Layanan Sertifikasi'),
+('LKT003', 'LYN001', 'Pembayaran');
 
 -- --------------------------------------------------------
 
@@ -181,8 +181,11 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `id_loket`, `nama_pegawai`, `jenis_loket`) VALUES
+('kepalalab', 'kepalalab', 'Bos Rizky', ''),
 ('PGW001', 'LKT001', 'Rizky', ''),
-('PGW002', 'LKT002', 'Nanda', '');
+('PGW002', 'LKT002', 'Nanda', ''),
+('PGW003', 'LKT003', 'Siti', ''),
+('PGW004', 'LKT001', 'Nugroho', '');
 
 -- --------------------------------------------------------
 
@@ -229,8 +232,10 @@ CREATE TABLE `pendaftaran` (
 INSERT INTO `pendaftaran` (`id_pendaftaran`, `id_loket`, `id_pegawai`, `jenis_produk`, `nama_produk`, `tanggal_penyerahan`, `tanggal_pendaftaran`) VALUES
 ('7NSZ8VdXTU', '', '', 'Makanan/Minuman', 'Jajancoklat', '2019-01-24', '2019-01-17'),
 ('bxyMC50dFh', '', '', 'Non Makanan/Minuman', 'Pipa Karbon', '2019-01-31', '2019-01-25'),
+('EsitITeeAw', '', '', 'Non Makanan/Minuman', 'Charger HP', '0000-00-00', '2019-02-13'),
 ('gmFhJd2t0N', 'LKT001', '', 'Makanan/Minuman', 'Ciki Tos', '2019-01-17', '2018-12-27'),
-('qLtfHKxArq', '', '', 'Non Makanan/Minuman', 'Tali Rafia', '2019-01-31', '2019-01-25');
+('qLtfHKxArq', '', '', 'Non Makanan/Minuman', 'Tali Rafia', '2019-01-31', '2019-01-25'),
+('w3QmMWszfW', '', '', 'Non Makanan/Minuman', 'Charger Laptop', '2019-02-20', '2019-02-13');
 
 -- --------------------------------------------------------
 
@@ -253,8 +258,10 @@ CREATE TABLE `pengunjung` (
 INSERT INTO `pengunjung` (`id_pengunjung`, `id_kinerja`, `asal_perusahaan`, `nama_pengunjung`, `jabatan`) VALUES
 ('7NSZ8VdXTU', '', 'PT Nyoblos Lagi', 'Mas Rizky', 'Pegawai'),
 ('bxyMC50dFh', '', 'PT Tahan Banting', 'Mas Dwi', 'Sekretaris'),
+('EsitITeeAw', '', 'PT Oppo Indo', '', NULL),
 ('gmFhJd2t0N', '', 'PT Nyemil Terus', 'Om Rizky', 'Bos'),
-('qLtfHKxArq', '', 'PT Panjang Pendek', 'Mas Nugraha', 'Owner');
+('qLtfHKxArq', '', 'PT Panjang Pendek', 'Mas Nugraha', 'Owner'),
+('w3QmMWszfW', '', 'PT Asus Indo', 'Ade', NULL);
 
 -- --------------------------------------------------------
 
@@ -269,8 +276,17 @@ CREATE TABLE `produk` (
   `id_pengunjung` varchar(10) NOT NULL,
   `id_lab` varchar(10) NOT NULL,
   `nama_produk` varchar(50) NOT NULL,
-  `jenis_produk` varchar(50) NOT NULL
+  `jenis_produk` varchar(50) NOT NULL,
+  `tanggal_sertifikasi` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`id_produk`, `id_layanan`, `no_antrian`, `id_pengunjung`, `id_lab`, `nama_produk`, `jenis_produk`, `tanggal_sertifikasi`) VALUES
+('1457655291', '', '1457655291', '', '', '', '', '2019-02-12'),
+('3112180001', '', '3112180001', '', '', '', '', '2019-02-12');
 
 --
 -- Indexes for dumped tables
