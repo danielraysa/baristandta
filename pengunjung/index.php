@@ -186,7 +186,62 @@
                     </div>
                 </div>
                 <!-- #END# Task Info -->
-                
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form action="form-action.php" method="post">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Ubah Password</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">ID Pendaftaran</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="id_pendaftaran" id="id_pendaftaran" class="form-control" value="<?php echo $_SESSION['id_pengunjung']; ?>" placeholder="ID Pendaftaran" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Password Lama</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="password" id="pass_lama" class="form-control" placeholder="Password lama" maxlength="10">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Password Baru</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="password" id="pass_baru" class="form-control" maxlength="10" placeholder="Password baru (max. 10 karakter)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal" id="btnUpdate" name="update">SAVE</button>
+                                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CANCEL</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

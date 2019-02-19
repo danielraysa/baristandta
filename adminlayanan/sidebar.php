@@ -7,7 +7,7 @@
                     <img src="../report/icon/INFORMASI LAYANAN.png" width="79" height="79" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><?php echo $_SESSION['nama_pegawai']; ?></div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><?php echo $_SESSION['nama_adminlayanan']; ?></div>
                     <div class="email">Admin Layanan Sertifikasi</div>
                    
                     <!--

@@ -34,6 +34,8 @@
       <input type="text" class="fadeIn second" name="username" value="<?php echo strftime("%d %B %Y", strtotime("+7 days")); ?>" readonly>
       <BR>
       <!--<input type="submit" class="fadeIn fourth" name="login" value="Return">-->
+      <a href="download.php" type="button" class="fadeIn third">Download Data Pendaftaran</a>
+      <br>
       <a href="index.php" type="button" class="fadeIn third">Return to Login</a>
     </form>
     <!-- Register Form -->

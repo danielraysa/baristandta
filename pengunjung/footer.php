@@ -43,6 +43,56 @@
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
     <script>
+        $('#changePassword').on('click', function (event) {
+            $('#myModal').modal('show');
+        });
+        $('#btnUpdate').on('click', function (event) {
+            var var_id = $('#id_pendaftaran').val();
+            var var_lama = $('#pass_lama').val();
+            var var_baru = $('#pass_baru').val();
+            if (var_lama != "" && var_baru != ""){
+                $.ajax({
+                    url:"ajax.php",
+                    cache:false,
+                    type: "POST",
+                    data: {id: var_id, lama: var_lama, baru: var_baru},
+                    success:function(result){
+                        console.log(result);
+                        if(result = true) {
+                            //$('#myModal').modal('toggle');
+                            swal({
+                                title: "Success",
+                                text: "Success updating password.",
+                                type: "success",
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                        }
+                        else {
+                            swal({
+                                title: "Error",
+                                text: "The older password didn't match.",
+                                type: "warning",
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                        }
+                    }
+                });
+            }
+            else{
+                swal({
+                    title: "Warning",
+                    type: "warning",
+                    text: "Data tidak boleh kosong.",
+                    confirmButtonColor: "#d9534f",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    closeOnConfirm: false
+                });
+            }
+        });
         $('#logoutButton').on('click', function (event) {
             event.preventDefault();
             var that = this;

@@ -37,8 +37,14 @@
                         </a>
                     </li>
                     <li>
-                        <a role="button" href="#" id="logoutButton">
+                        <a role="button" href="#" id="changePassword">
                             <i class="material-icons">lock</i>
+                            <span>Ubah Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a role="button" href="#" id="logoutButton">
+                            <i class="material-icons">exit_to_app</i>
                             <span>Logout</span>
                         </a>
                     </li>

@@ -33,8 +33,9 @@
                 if (mysqli_num_rows($result) == 0) {  // if you don't get a result, then you're good
                     $is_unique = true;
                     $query = mysqli_query($koneksi, "INSERT INTO pendaftaran (id_pendaftaran, jenis_produk, nama_produk, tanggal_pendaftaran) VALUES ('".$random_string."', '".$jenisproduk."', '".$namaproduk."', '".$date."')");
-                    $query1 = mysqli_query($koneksi, "INSERT INTO pengunjung (id_pengunjung, asal_perusahaan) VALUES ('".$random_string."', '".$namaperusahaan."')");
+                    $query1 = mysqli_query($koneksi, "INSERT INTO pengunjung (id_pengunjung, id_password, asal_perusahaan) VALUES ('".$random_string."', '12345', '".$namaperusahaan."')");
                     $_SESSION['temp_id'] = $random_string;
+                    $_SESSION['temp_query'] = "SELECT p.id_pendaftaran, p.nama_produk, p.jenis_produk, p.tanggal_pendaftaran, p2.asal_perusahaan FROM pendaftaran p JOIN pengunjung p2 ON p.id_pendaftaran = p2.id_pengunjung WHERE p.id_pendaftaran = '".$random_string."'";
                     header("location: success.php");
                 }
                 else {                     // if you DO get a result, keep trying
