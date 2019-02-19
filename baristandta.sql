@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2019 at 09:07 AM
+-- Generation Time: Feb 19, 2019 at 09:40 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -207,7 +207,8 @@ CREATE TABLE `pembayaran` (
 
 INSERT INTO `pembayaran` (`id_bayar`, `id_pendaftaran`, `total_bayar`, `tanggal_bayar`, `status_bayar`) VALUES
 (1, 'gmFhJd2t0N', 115000, '2019-01-24 02:19:37', 1),
-(3, '7NSZ8VdXTU', 115000, '2019-01-24 02:39:52', 1);
+(3, '7NSZ8VdXTU', 115000, '2019-01-24 02:39:52', 1),
+(7, 'bxyMC50dFh', 178000, '2019-02-19 08:25:17', 1);
 
 -- --------------------------------------------------------
 
@@ -230,10 +231,15 @@ CREATE TABLE `pendaftaran` (
 --
 
 INSERT INTO `pendaftaran` (`id_pendaftaran`, `id_loket`, `id_pegawai`, `jenis_produk`, `nama_produk`, `tanggal_penyerahan`, `tanggal_pendaftaran`) VALUES
+('0S0pmG4ZfB', '', '', 'Makanan/Minuman', 'Roti John', '2019-02-28', '2019-02-19'),
 ('7NSZ8VdXTU', '', '', 'Makanan/Minuman', 'Jajancoklat', '2019-01-24', '2019-01-17'),
 ('bxyMC50dFh', '', '', 'Non Makanan/Minuman', 'Pipa Karbon', '2019-01-31', '2019-01-25'),
-('EsitITeeAw', '', '', 'Non Makanan/Minuman', 'Charger HP', '0000-00-00', '2019-02-13'),
+('CZGGmx209h', '', '', 'Non Makanan/Minuman', 'Kursi Roda', '2019-02-26', '2019-02-19'),
+('EsitITeeAw', '', '', 'Non Makanan/Minuman', 'Charger HP', '2019-02-27', '2019-02-13'),
 ('gmFhJd2t0N', 'LKT001', '', 'Makanan/Minuman', 'Ciki Tos', '2019-01-17', '2018-12-27'),
+('gWkLp3AdKt', '', '', 'Makanan/Minuman', 'Roti Kasur', '2019-02-28', '2019-02-19'),
+('LMXASKoVaw', '', '', 'Non Makanan/Minuman', 'Buku Tulis', '2019-02-26', '2019-02-19'),
+('nbV6D8uWt7', '', '', 'Non Makanan/Minuman', 'Pipa PVC', '0000-00-00', '2019-02-19'),
 ('qLtfHKxArq', '', '', 'Non Makanan/Minuman', 'Tali Rafia', '2019-01-31', '2019-01-25'),
 ('w3QmMWszfW', '', '', 'Non Makanan/Minuman', 'Charger Laptop', '2019-02-20', '2019-02-13');
 
@@ -245,7 +251,7 @@ INSERT INTO `pendaftaran` (`id_pendaftaran`, `id_loket`, `id_pegawai`, `jenis_pr
 
 CREATE TABLE `pengunjung` (
   `id_pengunjung` varchar(10) NOT NULL,
-  `id_kinerja` varchar(10) NOT NULL,
+  `id_password` varchar(10) NOT NULL,
   `asal_perusahaan` varchar(50) NOT NULL,
   `nama_pengunjung` varchar(50) DEFAULT NULL,
   `jabatan` varchar(50) DEFAULT NULL
@@ -255,13 +261,18 @@ CREATE TABLE `pengunjung` (
 -- Dumping data for table `pengunjung`
 --
 
-INSERT INTO `pengunjung` (`id_pengunjung`, `id_kinerja`, `asal_perusahaan`, `nama_pengunjung`, `jabatan`) VALUES
-('7NSZ8VdXTU', '', 'PT Nyoblos Lagi', 'Mas Rizky', 'Pegawai'),
-('bxyMC50dFh', '', 'PT Tahan Banting', 'Mas Dwi', 'Sekretaris'),
-('EsitITeeAw', '', 'PT Oppo Indo', '', NULL),
-('gmFhJd2t0N', '', 'PT Nyemil Terus', 'Om Rizky', 'Bos'),
-('qLtfHKxArq', '', 'PT Panjang Pendek', 'Mas Nugraha', 'Owner'),
-('w3QmMWszfW', '', 'PT Asus Indo', 'Ade', NULL);
+INSERT INTO `pengunjung` (`id_pengunjung`, `id_password`, `asal_perusahaan`, `nama_pengunjung`, `jabatan`) VALUES
+('0S0pmG4ZfB', '12345', 'PT John Bread', 'Yuda', NULL),
+('7NSZ8VdXTU', 'anel2204', 'PT Nyoblos Lagi', 'Mas Rizky', 'Pegawai'),
+('bxyMC50dFh', '12345', 'PT Tahan Banting', 'Mas Dwi', 'Sekretaris'),
+('CZGGmx209h', '12345', 'PT Chairinda', 'Aini', NULL),
+('EsitITeeAw', '12345', 'PT Oppo Indo', 'Dewi', NULL),
+('gmFhJd2t0N', '12345', 'PT Nyemil Terus', 'Om Rizky', 'Bos'),
+('gWkLp3AdKt', '12345', 'PT Sari Indo', 'Lingga', NULL),
+('LMXASKoVaw', '12345', 'PT Buku Indo', 'Yoga', NULL),
+('nbV6D8uWt7', '12345', 'PT PVC Elex', NULL, NULL),
+('qLtfHKxArq', '12345', 'PT Panjang Pendek', 'Mas Nugraha', 'Owner'),
+('w3QmMWszfW', '12345', 'PT Asus Indo', 'Ade', NULL);
 
 -- --------------------------------------------------------
 
@@ -378,7 +389,7 @@ ALTER TABLE `kinerja`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
