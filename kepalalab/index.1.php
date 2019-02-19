@@ -48,26 +48,35 @@
                         <div class="body">
                             <form class="form-horizontal">
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
-                                        <label for="email_address_2">Layanan Paling Banyak Dipilih</label>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 form-control-label">
+                                    <?php
+                                    $query = mysqli_query($koneksi, "SELECT l.nama_layanan, COUNT(a.id_layanan) as jml FROM antrian a JOIN layanan l ON a.id_layanan = l.id_layanan GROUP BY a.id_layanan");
+                                    while ($row = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <label for="email_address_2"><?php echo $row['nama_layanan']; ?></label>
+                                    <?php
+                                    }
+                                    ?>
                                     </div>
                                     <?php
                                     $query = mysqli_query($koneksi, "SELECT l.nama_layanan, COUNT(a.id_layanan) as jml FROM antrian a JOIN layanan l ON a.id_layanan = l.id_layanan GROUP BY a.id_layanan");
                                     $namalayanan = "";
                                     $jml = 0;
-                                    while ($get = mysqli_fetch_array($query)) {
+                                    /* while ($get = mysqli_fetch_array($query)) {
                                         if ($jml < $get['jml']) {
                                             $jml = $get['jml'];
                                             $namalayanan = $get['nama_layanan'];
                                         }
+                                    } */
+                                    ?>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 form-control-label">
+                                    <?php
+                                        while ($get = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <input type="number" class="form-control" value="<?php echo $get['jml']; ?>" readonly/>
+                                    <?php
                                     }
                                     ?>
-                                    <div class="col-lg-6 col-md-6 col-sm-5 col-xs-5">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" id="email_address_2" class="form-control" value="<?php echo $namalayanan; ?>" placeholder="" disabled>
-                                            </div>
-                                        </div>
                                     </div>
                                     
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">

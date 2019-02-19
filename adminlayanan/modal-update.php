@@ -77,19 +77,7 @@ $fet = mysqli_fetch_array($qu);
         </div>
         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
             <div class="form-group">
-                <div class="form-line">
-                    <input type="text" class="form-control" value="<?php echo $fet['status']; ?>" placeholder="Nama Layanan" readonly>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-            <label for="email_address_2">Update Status Sertifikasi</label>
-        </div>
-        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-            
-                <select name="status_sertifikasi" class="bootstrap-select form-control show-tick">
+                <select name="status_sertifikasi" id="status_tahapan" class="bootstrap-select form-control show-tick">
                     <option value="Tahap 1">Tahap 1 - Pengumpulan Uji Produk</option>
                     <?php
                     if ($fet['id_layanan'] == "LYN001") {
@@ -107,9 +95,14 @@ $fet = mysqli_fetch_array($qu);
                     ?>
                     <option value="Tahap 4">Tahap 4 - Keputusan Sertifikasi</option>
                 </select>
-            
+            </div>
         </div>
     </div>
+    <script>
+    $('#status_tahapan').val('<?php echo $fet['status']; ?>');
+    $('#status_tahapan').selectpicker();
+    </script>
+    
 </div>
 <div class="modal-footer">
     <button type="submit" class="btn btn-link waves-effect" name="update">SAVE</button>

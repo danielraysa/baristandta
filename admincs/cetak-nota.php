@@ -32,6 +32,6 @@ $pdf->Text(100, 74.5, $tanggalpenyerahan);
 $pdf->Text(100, 80, $row['asal_perusahaan']);
 $pdf->Text(100, 86, $row['nama_produk']);
 $pdf->Text(100, 92, $row['jenis_produk']);
-$pdf->Text(100, 96.5, $row['nama_pengunjung']);
+$pdf->Text(100, 98, $row['nama_pengunjung']);
 $pdf->Output('I', 'BUKTI_PENDAFTARAN.pdf');
 ?>

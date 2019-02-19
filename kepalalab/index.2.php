@@ -19,38 +19,61 @@
                     </div>
                 </div>
             </div> -->
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Data Pemasukan Per Bulan</h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Bulan - Tahun</th>
+                                            <th>Jumlah</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Bulan - Tahun</th>
+                                            <th>Jumlah</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <?php
+                                        $query = mysqli_query($koneksi, "SELECT MONTHNAME(tanggal_bayar) as month, YEAR(tanggal_bayar) as year, SUM(total_bayar) as sum FROM pembayaran GROUP BY YEAR(tanggal_bayar) DESC, MONTH(tanggal_bayar) DESC");
+                                        $a = 1;
+                                        while ($row = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $a; ?></td>
+                                            <td><?php echo $row['month']." - ".$row['year']; ?></td>
+                                            <td>Rp. <?php echo $row['sum']; ?></td>
+                                        </tr>
+                                    <?php
+                                        $a++;
+                                        }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="row clearfix">
                 <!-- Task Info -->
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-12">
                     <div class="card">
                         <div class="header">
-                            
+                            <h2>Persentase Kinerja Karyawan Bulan ini</h2>
                         <div class="body">
                             <div class="row">
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                    <label for="password_2">Jumlah Pemasukan Bulan Ini  </label>
-                                </div>
-                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <?php
-                                                $ab = mysqli_query($koneksi,"SELECT SUM(total_bayar) as total FROM pembayaran WHERE MONTH(tanggal_bayar) = '".date('m')."'");
-                                                $get = mysqli_fetch_array($ab);
-                                            ?>
-                                            <input type="text" id="password_2" class="form-control" value="<?php echo $get['total']; ?>" disabled>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label for="password_2">Persentase Kinerja Karyawan Bulan ini </label>
-                                </div>
-                                
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
                                     <canvas id="myChart"></canvas>
                                     <?php
                                         $a = mysqli_query($koneksi, "SELECT ROUND(AVG(angka_rating), 1) as rating FROM kinerja WHERE id_pegawai = 'LKT001'");

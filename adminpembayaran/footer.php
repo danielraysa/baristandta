@@ -115,6 +115,56 @@
             }
         });
     });
+    $('#btnBayar').on('click', function(event){
+        event.preventDefault();
+        var var_id = $('#id_pendaftaran').val();
+        var var_bayar = $('#jml_bayar').val();
+        if (var_id != "" && var_bayar != ""){
+            $.ajax({
+                url:"ajax.php",
+                type: "POST",
+                data: {id: var_id, bayar: var_bayar},
+                success:function(data){
+                    console.log(data);
+                    //var datanew = JSON.parse(data);
+                    swal({
+                        title: "Success",
+                        type: "info",
+                        text: "Berhasil menyimpan data. Silahkan mencetak bukti pembayaran.",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d9534f",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Print",
+                        allowOutsideClick: false,
+                        closeOnConfirm: false
+                    }, function(){
+                        swal({
+                            title: "Success",
+                            text: "Please wait a moment.",
+                            type: "success",
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                        //window.open('cetak-nota.php?id='+datanew.id,'_blank');
+                        window.location.href = 'index.php?success';
+                        window.open('cetak-nota-pembayaran.php','_blank');
+                    });
+                }
+            });
+        }
+        else{
+            swal({
+                title: "Warning",
+                type: "warning",
+                text: "Data tidak boleh kosong.",
+                confirmButtonColor: "#d9534f",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "OK",
+                allowOutsideClick: false,
+                closeOnConfirm: false
+            });
+        }
+    });
     </script>
     <script>
 	$('.modalLink').click(function(){

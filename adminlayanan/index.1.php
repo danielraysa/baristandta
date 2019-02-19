@@ -108,7 +108,7 @@
                                             $query = mysqli_query($koneksi, "SELECT * FROM layanan");
                                             while ($row = mysqli_fetch_array($query)) {
                                             ?>
-                                            <option value="<?php echo $row['id_layanan']; ?>"><?php echo $row['nama_layanan']; ?></option>
+                                            <option id="<?php echo $row['id_layanan']; ?>" value="<?php echo $row['id_layanan']; ?>"><?php echo $row['nama_layanan']; ?></option>
                                             <?php
                                             }
                                             ?>

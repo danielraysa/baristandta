@@ -123,7 +123,8 @@
                                 </div>
                                 <center>
                                 <div class="form-group">
-                                    <button type="submit" name="bayar" class="btn btn-success waves-effect">Simpan Pembayaran</button>
+                                    <!--<button type="submit" name="bayar" class="btn btn-success waves-effect">Simpan Pembayaran</button>-->
+                                    <button type="button" id="btnBayar" name="bayar" class="btn btn-success waves-effect">Simpan Pembayaran</button>
                                 </div>
                                 </center>
                             </form>

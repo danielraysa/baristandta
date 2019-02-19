@@ -7,6 +7,7 @@
     <!-- Select Plugin Js -->
     <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- Slimscroll Plugin Js -->
     <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
@@ -108,9 +109,11 @@
                     }
                     $('#namapengunjung').val(datanew.nama);
                     $('#nama_perusahaan').val(datanew.perusahaan);
+                    //$('select').val(datanew.jenis).combobox('refresh');
+                    //document.getElementById('nama_layanan').value = datanew.jenis;
+                    //document.getElementById('nama_layanan').style.display = "block";
                     $('#nama_layanan').val(datanew.jenis);
-                    //$('#nama_perusahaan').prop('disabled', true);
-                    
+                    $("#nama_layanan").selectpicker("refresh");
                 }
             });
         });

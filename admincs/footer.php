@@ -193,8 +193,8 @@
                                 showConfirmButton: false
                             });
                             //window.open('cetak-nota.php?id='+datanew.id,'_blank');
+                            window.location.href = 'index.php?success';
                             window.open('cetak-nota.php','_blank');
-                            window.open('index.php?success');
                         });
                     }
                 });
