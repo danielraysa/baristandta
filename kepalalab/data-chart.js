@@ -35,6 +35,7 @@ $(document).ready(function(){
                         text: 'Admin CS',
                         fontSize: 18
                     },
+                    maintainAspectRatio: false,
                     responsive: true,
                     legend: true
                 }
@@ -81,6 +82,7 @@ $(document).ready(function(){
                         fontSize: 18
                     },
                     responsive: true,
+                    maintainAspectRatio: false,
                     legend: true
                 }
             });
@@ -126,6 +128,7 @@ $(document).ready(function(){
                         fontSize: 18
                     },
                     responsive: true,
+                    maintainAspectRatio: false,
                     legend: true
                 }
             });

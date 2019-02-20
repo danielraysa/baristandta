@@ -67,30 +67,30 @@
 
             <div class="row clearfix">
                 <!-- Task Info -->
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-12">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
                         <div class="header">
                             <h2>Persentase Kinerja Karyawan Bulan ini</h2>
                         <div class="body">
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <canvas id="myChart"></canvas>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <canvas id="myChart" height="300px"></canvas>
                                     <?php
                                         $a = mysqli_query($koneksi, "SELECT ROUND(AVG(angka_rating), 1) as rating FROM kinerja WHERE id_pegawai = 'LKT001'");
                                         $b = mysqli_fetch_array($a);
                                         echo "<br><center>Rating : ".$b['rating']."</center>";
                                     ?>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-sm-12">
-                                    <canvas id="myChart_A"></canvas>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <canvas id="myChart_A" height="300px"></canvas>
                                     <?php
                                         $a = mysqli_query($koneksi, "SELECT ROUND(AVG(angka_rating), 1) as rating FROM kinerja WHERE id_pegawai = 'LKT002'");
                                         $b = mysqli_fetch_array($a);
                                         echo "<br><center>Rating : ".$b['rating']."</center>";
                                     ?>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-sm-12">
-                                    <canvas id="myChart_B"></canvas>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <canvas id="myChart_B" height="300px"></canvas>
                                     <?php
                                         $a = mysqli_query($koneksi, "SELECT ROUND(AVG(angka_rating), 1) as rating FROM kinerja WHERE id_pegawai = 'LKT003'");
                                         $b = mysqli_fetch_array($a);
