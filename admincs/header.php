@@ -45,6 +45,7 @@
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 
     <link href="../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="../chat/chat.css" rel="stylesheet">
 </head>
 
 <body class="theme-red">

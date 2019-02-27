@@ -27,7 +27,7 @@
                 }
             }
 
-            $insert = mysqli_query($koneksi, "INSERT INTO antrian (no_antrian, id_layanan, id_pendaftaran, masa_expired, status, approval, hapus_data) VALUES ('".$antrian."','".$namalayanan."','".$idpendaftaran."', ".$expired.", 'Tahap 1', 0, 0)");
+            $insert = mysqli_query($koneksi, "INSERT INTO antrian (no_antrian, id_layanan, id_pendaftaran, masa_expired, target_status, approval, hapus_data) VALUES ('".$antrian."','".$namalayanan."','".$idpendaftaran."', ".$expired.", 'Tahap 1', 0, 0)");
             $update = mysqli_query($koneksi, "UPDATE pengunjung SET asal_perusahaan = '".$namaperusahaan."', nama_pengunjung = '".$namapengunjung."', jabatan = '".$jabatan."' WHERE id_pengunjung = '".$idpendaftaran."'");
 
             if($insert && $update) {
@@ -52,15 +52,16 @@
         $status = $_POST['status_sertifikasi'];
         $no_antrian = $_POST['no_antrian'];
         $date = date('Y-m-d');
+        /*
         if ($status == "Tahap 4") {
             $cek = mysqli_query($koneksi, "SELECT * FROM produk WHERE id_produk = '".$no_antrian."'");
             if (mysqli_num_rows($cek) == 0) {
                 $insert = mysqli_query($koneksi, "INSERT INTO produk (id_produk, no_antrian, tanggal_sertifikasi) VALUES ('".$no_antrian."', '".$no_antrian."','".$date."')");
             }
-        }
+        } */
         $update = mysqli_query($koneksi, "UPDATE pendaftaran SET nama_produk = '".$namaproduk."' WHERE id_pendaftaran = '".$idpendaftaran."'");
         $update2 = mysqli_query($koneksi, "UPDATE pengunjung SET asal_perusahaan = '".$namaperusahaan."' WHERE id_pengunjung = '".$idpendaftaran."'");
-        $update3 = mysqli_query($koneksi, "UPDATE antrian SET status = '".$status."' WHERE id_pendaftaran = '".$idpendaftaran."'");
+        $update3 = mysqli_query($koneksi, "UPDATE antrian SET target_status = '".$status."', approval = 0 WHERE id_pendaftaran = '".$idpendaftaran."'");
         if($update && $update2 && $update3) {
             header("location: ../adminlayanan/index.2.php?success");
         }

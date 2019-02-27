@@ -143,6 +143,21 @@
 	});
 	</script>
     <script>
+	$('.modalShow').click(function(){
+		var id = $(this).attr('data-id');
+		console.log(id);
+		$.ajax({
+			url:"modal-user.php",
+			cache:false,
+			type: "GET",
+			data: "ID="+id,
+			success:function(data){
+				$(".modal-content").html(data);
+			}
+		});
+	});
+	</script>
+    <script>
     $('#saveRating').click(function(e){
         //var stars = $(':radio').val();
         var var_keterangan = $('#keterangan').val();

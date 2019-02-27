@@ -17,7 +17,7 @@ setlocale (LC_TIME, 'INDONESIAN');
 $query = mysqli_query($koneksi, $_SESSION['temp_query']);
 $row = mysqli_fetch_array($query);
 
-$date = strftime("%d %B %Y", strtotime("+7 days"));
+$date = strftime("%d %B %Y %T", strtotime($_SESSION['temp_date']));
 $tanggaldaftar = strftime("%d %B %Y", strtotime($row['tanggal_pendaftaran']));
 $pdf->SetFont('Times','',13);
 $pdf->Text(80, 60, $tanggaldaftar);

@@ -42,7 +42,14 @@
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-12">
                     <div class="card">
                         <div class="header">
-                            
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Daftar Produk Sertifikasi</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right">
+                                    <a role="button" class="btn btn-success waves-effect modalFilter" href="#" data-toggle="modal" data-target="#myModalFilter">Filter</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="body">
                             <form>
@@ -60,21 +67,16 @@
                                             <th>Tindakan</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                        <th>ID Pendaftaran</th>
-                                            <th>Asal Perusahaan</th>
-                                            <th>Nama Produk</th>
-                                            <th>Jenis Produk</th>
-                                            <th>Tanggal Pendaftaran</th>
-                                            <th>Tanggal Penyerahan</th>
-                                            <th>Nama Pengunjung</th>
-                                            <th>Tindakan</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                     <?php
-                                        $query = mysqli_query($koneksi, "SELECT p.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, p.tanggal_pendaftaran, p.tanggal_penyerahan, p1.nama_pengunjung FROM pendaftaran p JOIN pengunjung p1 ON p.id_pendaftaran = p1.id_pengunjung WHERE p.tanggal_penyerahan != '0000-00-00'");
+                                        if (isset($_GET['tanggal_awal'])) {
+                                            $tgl_awal = $_GET['tanggal_awal'];
+                                            $tgl_akhir = $_GET['tanggal_akhir'];
+                                            $query = mysqli_query($koneksi, "SELECT p.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, p.tanggal_pendaftaran, p.tanggal_penyerahan, p1.nama_pengunjung FROM pendaftaran p JOIN pengunjung p1 ON p.id_pendaftaran = p1.id_pengunjung WHERE p.tanggal_penyerahan BETWEEN '".$tgl_awal."' AND '".$tgl_akhir."'");
+                                        }
+                                        else {
+                                            $query = mysqli_query($koneksi, "SELECT p.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, p.tanggal_pendaftaran, p.tanggal_penyerahan, p1.nama_pengunjung FROM pendaftaran p JOIN pengunjung p1 ON p.id_pendaftaran = p1.id_pengunjung WHERE p.tanggal_penyerahan != '0000-00-00'");
+                                        }
                                         while ($row = mysqli_fetch_array($query)) {
                                     ?>
                                         <tr>
@@ -106,6 +108,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" id="myModalFilter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

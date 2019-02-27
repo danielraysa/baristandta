@@ -42,6 +42,7 @@
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
+    <script src="../chat/chat.js"></script>
     <script>
         $('#changePassword').on('click', function (event) {
             $('#myModal').modal('show');

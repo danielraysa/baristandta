@@ -60,21 +60,9 @@
                                             <th>Tindakan</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                        <th>ID Pendaftaran</th>
-                                            <th>Asal Perusahaan</th>
-                                            <th>Nama Produk</th>
-                                            <th>Jenis Produk</th>
-                                            <th>Jenis Sertifikasi</th>
-                                            <th>Masa Expired</th>
-                                            <th>Status Sertifikasi</th>
-                                            <th>Tindakan</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                     <?php
-                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status, a.approval FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung");
+                                        $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status, a.target_status, a.approval FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung");
                                         while ($row = mysqli_fetch_array($query)) {
                                     ?>
                                         <tr>
@@ -87,14 +75,31 @@
                                             <?php
                                                 if($row['approval'] == 0) {
                                             ?>
-                                            <td><?php echo $row['status']." (Belum approval)"; ?></td>
-                                            <td><button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" disabled >Update</button></td>
+                                            <td><?php echo $row['target_status']." (Belum approval)"; ?></td>
+                                            <td>
+                                                <button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" disabled >Update</button>
+                                                <button type="button" class="btn btn-primary waves-effect modalShow" data-toggle="modal" data-target="#myModalID" data-id="<?php echo $row['id_pendaftaran']; ?>" >Show ID</button>
+                                            </td>
                                             <?php
                                                 } 
                                                 else {
                                             ?>
                                             <td><?php echo $row['status']; ?></td>
-                                            <td><button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" >Update</button></td>
+                                            <td>
+                                            <?php
+                                                if($row['status'] == "Tahap 4") {
+                                            ?>
+                                            <button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" disabled>Update</button>
+                                            <?php
+                                                }
+                                                else {
+                                                ?>
+                                            <button type="button" name="update" class="btn btn-success waves-effect modalLink" data-toggle="modal" data-target="#myModal" data-id="<?php echo $row['id_pendaftaran']; ?>" >Update</button>
+                                            <?php
+                                                }
+                                            ?>
+                                            <button type="button" class="btn btn-primary waves-effect modalShow" data-toggle="modal" data-target="#myModalID" data-id="<?php echo $row['id_pendaftaran']; ?>" >Show ID</button>
+                                            </td>
                                             <?php
                                                 }
                                             ?>
@@ -114,6 +119,13 @@
                 <!-- Modal Update -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="myModalID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             
                         </div>

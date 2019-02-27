@@ -58,6 +58,7 @@
     <script src="../js/admin.js"></script>
     <script src="../js/pages/ui/dialogs.js"></script>
     <script src="../js/pages/tables/jquery-datatable.js"></script>
+    <script src="../chat/chat.js"></script>
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
@@ -154,6 +155,19 @@
 			}
 		});
 	});
+    $('.modalFilter').click(function(){
+        $.ajax({
+			url:"modal-filter.php",
+			cache:false,
+			type: "GET",
+			data: "ID=",
+			success:function(data){
+				$(".modal-content").html(data);
+			}
+		});
+		//var id = $(this).attr('data-id');
+		//console.log(id);
+	});
 	</script>
     <script>
         $('#simpan_cetak').on('click', function(event){
@@ -163,41 +177,57 @@
             var var_produk = $('#hasil2').val();
             var var_jenis = $('#hasil3').val();
             var tgl_datang = $('#tanggal').val();
+            var date_rec = new Date(tgl_datang);
+            var date_now = new Date();
             var tgl_penyerahan = $('#tanggal_penyerahan').val();
             var var_pengunjung = $('#nama_pengunjung').val();
             if (tgl_penyerahan != "" && var_pengunjung != ""){
-                $.ajax({
-                    url:"ajax-daftar.php",
-                    cache:false,
-                    type: "POST",
-                    data: {id: var_id, perusahaan: var_perusahaan, datang: tgl_datang, penyerahan: tgl_penyerahan, produk: var_produk, jenis: var_jenis, pengunjung: var_pengunjung},
-                    success:function(data){
-                        console.log(data);
-                        var datanew = JSON.parse(data);
-                        swal({
-                            title: "Success",
-                            type: "info",
-                            text: "Berhasil menyimpan data. Silahkan mencetak bukti pendaftaran.",
-                            showCancelButton: true,
-                            confirmButtonColor: "#d9534f",
-                            cancelButtonColor: "#d33",
-                            confirmButtonText: "Print",
-                            allowOutsideClick: false,
-                            closeOnConfirm: false
-                        }, function(){
+                if(date_rec <= date_now) {
+                    $.ajax({
+                        url:"ajax-daftar.php",
+                        cache:false,
+                        type: "POST",
+                        data: {id: var_id, perusahaan: var_perusahaan, datang: tgl_datang, penyerahan: tgl_penyerahan, produk: var_produk, jenis: var_jenis, pengunjung: var_pengunjung},
+                        success:function(data){
+                            console.log(data);
+                            var datanew = JSON.parse(data);
                             swal({
                                 title: "Success",
-                                text: "Please wait a moment.",
-                                type: "success",
-                                timer: 2000,
-                                showConfirmButton: false
+                                type: "info",
+                                text: "Berhasil menyimpan data. Silahkan mencetak bukti pendaftaran.",
+                                showCancelButton: true,
+                                confirmButtonColor: "#d9534f",
+                                cancelButtonColor: "#d33",
+                                confirmButtonText: "Print",
+                                allowOutsideClick: false,
+                                closeOnConfirm: false
+                            }, function(){
+                                swal({
+                                    title: "Success",
+                                    text: "Please wait a moment.",
+                                    type: "success",
+                                    timer: 2000,
+                                    showConfirmButton: false
+                                });
+                                //window.open('cetak-nota.php?id='+datanew.id,'_blank');
+                                window.location.href = 'index.php?success';
+                                window.open('cetak-nota.php','_blank');
                             });
-                            //window.open('cetak-nota.php?id='+datanew.id,'_blank');
-                            window.location.href = 'index.php?success';
-                            window.open('cetak-nota.php','_blank');
-                        });
-                    }
-                });
+                        }
+                    });
+                }
+                else {
+                    swal({
+                        title: "Warning",
+                        type: "warning",
+                        text: "Waktu kedatangan tidak boleh mendahului.",
+                        confirmButtonColor: "#d9534f",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        closeOnConfirm: false
+                    });
+                }
             }
             else{
                 swal({

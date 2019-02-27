@@ -42,8 +42,9 @@
         <option value="Makanan/Minuman">Makanan/Minuman</option>
         <option value="Non Makanan/Minuman">Non Makanan/Minuman</option>
       </select>
-      <BR>
-      <input type="text" class="fadeIn second" name="namaperusahaan" placeholder="Nama Perusahaan" required>
+      
+      <input type="number" class="fadeIn second" name="expired" placeholder="Masa Expired (dalam satuan hari)" required><BR>
+      <input type="text" class="fadeIn third" name="namaperusahaan" placeholder="Nama Perusahaan" required>
       <BR>
       <input type="submit" class="fadeIn fourth" name="register" value="Daftar Sekarang">
     </form>

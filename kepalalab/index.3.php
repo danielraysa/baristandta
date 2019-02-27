@@ -64,21 +64,6 @@
                                             <th>Tindakan</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>ID Pendaftaran</th>
-                                            <th>Asal Perusahaan</th>
-                                            <th>Nama Pengunjung</th>
-                                            <th>Jabatan</th>
-                                            <th>Nama Produk</th>
-                                            <th>Jenis Produk</th>
-                                            <th>Jenis Sertifikasi</th>
-                                            <th>Masa Expired</th>
-                                            <th>Tanggal Penyerahan</th>
-                                            <th>Tanggal Sertifikasi</th>
-                                            <th>Tindakan</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                     <?php
                                         $query = mysqli_query($koneksi, "SELECT a.id_pendaftaran, p1.asal_perusahaan, p1.nama_pengunjung, p1.jabatan, p.nama_produk, p.jenis_produk, l.nama_layanan, a.masa_expired, a.status, p.tanggal_penyerahan, pr.tanggal_sertifikasi FROM antrian a JOIN pendaftaran p on a.id_pendaftaran = p.id_pendaftaran JOIN layanan l ON a.id_layanan = l.id_layanan JOIN pengunjung p1 ON a.id_pendaftaran = p1.id_pengunjung JOIN produk pr ON a.no_antrian = pr.no_antrian WHERE a.status = 'Tahap 4' AND a.hapus_data = 0");

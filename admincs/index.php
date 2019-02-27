@@ -41,7 +41,11 @@
                 <!-- Task Info -->
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-12">
                     <div class="card">
-                        
+                        <div class="header">
+                            
+                                <h2>Data Penyerahan Produk</h2>
+                            
+                        </div>
                         <div class="body">
                             <!-- <form method="post" action="form-action.php"> -->
                                 <div class="row">
@@ -144,6 +148,51 @@
                     </div>
                 </div>
                 <!-- #END# Task Info -->
+                <!--
+                <div id="chat1" class="panel panel-chat mini">
+                    <div class="panel-heading">
+                        <a href="#" class="chatMinimize" onclick="return false"><span>Özgür Gürbüz</span></a>
+                        <a href="#" class="chatMinimize" onclick="return false"><i class="glyphicon glyphicon-remove"></i></a>
+                        <div class="clearFix"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="messageMe">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
+                            <span>asdasdssadasdasdassssssssssssssssssssssssssssssssssssssssssdasdasd</span>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="messageHer">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
+                            <span>asdasdsassssssssssssssssssssssssssssssssssssssss</span>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="messageMe">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
+                            <span>asdasdssadasdasdassssssssssssssssssssssssssssssssssssssssssdasdasd</span>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="messageHer">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
+                            <span>asdasdsassssssssssssssssssssssssssssssssssssssss</span>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="messageMe">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
+                            <span>asdasdssadasdasdassssssssssssssssssssssssssssssssssssssssssdasdasd</span>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="messageHer">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
+                            <span>asdasdsassssssssssssssssssssssssssssssssssssssss</span>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="clearFix"></div>
+                    </div>
+                    <div class="panel-footer">
+                        <textarea name="textMessage" cols="0" rows="0"></textarea>
+                    </div>
+                </div>
+                -->
                 
             </div>
         </div>

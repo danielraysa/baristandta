@@ -242,6 +242,50 @@
                     </div>
                 </div>
 
+                <div class="panel panel-chat">
+                    <div class="panel-heading">
+                        <a href="#" class="chatMinimize" onclick="return false"><span>Chat with Admin CS</span></a>
+                        <a href="#" class="chatMinimize" onclick="return false"><i class="glyphicon glyphicon-remove"></i></a>
+                        <div class="clearFix"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="messageMe">
+                        <img src="../report/ICON/pengunjung.png" alt=""/>
+                            <span>asdasdssadasdasdassssssssssssssssssssssssssssssssssssssssssdasdasd</span>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="messageHer">
+                            <img src="../report/ICON/cs.jpg" alt=""/>
+                            <span>asdasdsassssssssssssssssssssssssssssssssssssssss</span>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="messageMe">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
+                            <span>asdasdssadasdasdassssssssssssssssssssssssssssssssssssssssssdasdasd</span>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="messageHer">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
+                            <span>asdasdsassssssssssssssssssssssssssssssssssssssss</span>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="messageMe">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
+                            <span>asdasdssadasdasdassssssssssssssssssssssssssssssssssssssssssdasdasd</span>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="messageHer">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
+                            <span>asdasdsassssssssssssssssssssssssssssssssssssssss</span>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="clearFix"></div>
+                    </div>
+                    <div class="panel-footer">
+                        <textarea name="textMessage" cols="0" rows="0"></textarea>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

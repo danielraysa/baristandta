@@ -98,6 +98,53 @@
                                     ?>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Loket</th>
+                                                <th>★</th>
+                                                <th>★★</th>
+                                                <th>★★★</th>
+                                                <th>★★★★</th>
+                                                <th>★★★★★</th>
+                                                <th>Jumlah</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                            $query = mysqli_query($koneksi, "SELECT
+                                            l.jenis_loket,
+                                            SUM(CASE WHEN angka_rating = 1 THEN +1 ELSE 0 END) AS Bintang_1,
+                                            SUM(CASE WHEN angka_rating = 2 THEN +1 ELSE 0 END) AS Bintang_2,
+                                            SUM(CASE WHEN angka_rating = 3 THEN +1 ELSE 0 END) AS Bintang_3,
+                                            SUM(CASE WHEN angka_rating = 4 THEN +1 ELSE 0 END) AS Bintang_4,
+                                            SUM(CASE WHEN angka_rating = 5 THEN +1 ELSE 0 END) AS Bintang_5,
+                                            COUNT(*) AS Jumlah
+                                        FROM kinerja k JOIN loket l ON k.id_pegawai = l.id_loket
+                                        GROUP BY
+                                            k.id_pegawai");
+                                            $a = 1;
+                                            while ($row = mysqli_fetch_array($query)) {
+                                        ?>
+                                            <tr>
+                                                <td>Admin <?php echo $row['jenis_loket']; ?></td>
+                                                <td><?php echo $row['Bintang_1']; ?></td>
+                                                <td><?php echo $row['Bintang_2']; ?></td>
+                                                <td><?php echo $row['Bintang_3']; ?></td>
+                                                <td><?php echo $row['Bintang_4']; ?></td>
+                                                <td><?php echo $row['Bintang_5']; ?></td>
+                                                <td><?php echo $row['Jumlah']; ?></td>
+                                            </tr>
+                                        <?php
+                                            $a++;
+                                            }
+                                        ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
