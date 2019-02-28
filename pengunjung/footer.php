@@ -56,7 +56,7 @@
                 }
             });
         }
-        window.setInterval(reloadData, 10000); //every 10 seconds
+        window.setInterval(reloadData, 3000); //every 3 seconds
         
         $('#sendChat').on('click', function(){
             var id_user = "<?php echo $_SESSION['id_pengunjung']; ?>";

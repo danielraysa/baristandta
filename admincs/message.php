@@ -27,20 +27,19 @@
                             </div>-->
                         </div>
                         <div class="inbox_chat" id="chat_list">
+                            <!--<div class="chat_list active_chat"></div> -->
                             <?php
-                            
-                                $query = mysqli_query($koneksi, "SELECT distinct(p.id_pengunjung), p.nama_pengunjung, p.asal_perusahaan, cs.message, cs.date_sent FROM chat_system cs JOIN pengunjung p ON cs.username = p.id_pengunjung ORDER BY cs.date_sent DESC");
-                                //$query = mysqli_query($koneksi, "SELECT p.nama_pengunjung, p.asal_perusahaan FROM chat_system cs JOIN pengunjung p ON cs.username = p.id_pengunjung GROUP BY p.id_pengunjung");
+                                //$query = mysqli_query($koneksi, "SELECT distinct(p.id_pengunjung), p.nama_pengunjung, p.asal_perusahaan, cs.message, cs.date_sent FROM chat_system cs JOIN pengunjung p ON cs.username = p.id_pengunjung ORDER BY cs.date_sent DESC");
+                                $query = mysqli_query($koneksi, "SELECT p.id_pengunjung, p.nama_pengunjung, p.asal_perusahaan FROM chat_system cs JOIN pengunjung p ON cs.username = p.id_pengunjung GROUP BY p.id_pengunjung");
                                 while($chat = mysqli_fetch_array($query)){
                             ?> 
-                            <!--<div class="chat_list active_chat"></div> -->
-                            <div class="chat_list" data-chat="<?php echo $chat['id_pengunjung']; ?>">
+                            <div class="chat_list" id="chat_entry" data-chat="<?php echo $chat['id_pengunjung']; ?>">
                                 <div class="chat_people">
                                     <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
                                     </div>
                                     <div class="chat_ib">
                                         <h5><?php echo $chat['nama_pengunjung']; ?><span class="chat_date">Dec 25</span></h5>
-                                        <p><?php echo substr($chat['message'], 0, 50); ?></p>
+                                        <p><?php echo substr($chat['asal_perusahaan'], 0, 50); ?></p>
                                     </div>
                                 </div>
                             </div>

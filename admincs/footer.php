@@ -78,30 +78,33 @@
                 type: "POST",
                 data: {id_list: id_user},
                 success: function(result){
-                    $("#chat_list").html("");
                     $("#chat_list").html(result); //takes the content of your url and throws it into div1
                 }
             });
         }
-        window.setInterval(reloadData, 10000); //every 10 seconds
+        //window.setInterval(reloadData, 5000); //every 5 seconds
         // chat_list on click
+        var chatValue = "";
+        //$('#chat_entry').on('click', function(){
         $('.chat_list').on('click', function(){
-            var chatValue = (this).getAttribute('data-chat');
+            //chatValue = $('.chat_list').attr('data-chat');
+            chatValue = $(this).attr('data-chat');
+            console.log(chatValue);
             $.ajax({
                 url: "ajax-message.php",
                 type: "POST",
                 data: {id_chat: chatValue},
                 success:function(result){
-                    //console.log(result);
-                    $("#chat_history").html("");
+                    $("#textChat").val("");
                     $("#chat_history").html(result);
                 }
             });
-            alert(chatValue);
+            //alert(chatValue);
         });
         // send chat
         $('#sendChat').on('click', function(){
-            var id_user = "<?php echo $_SESSION['id_pegawai']; ?>";
+            var id_user = chatValue;
+            //alert(id_user);
             var txt = $('#textChat').val();
             if(txt != "") {
                 $.ajax({
@@ -109,10 +112,9 @@
                     type: "POST",
                     data: {id: id_user, text: txt},
                     success:function(result){
-                        //console.log(result);
-                        $("#chat_history").html("");
                         $("#chat_history").html(result);
                         $("#textChat").val("");
+                        location.reload();
                     }
                 });
             }
