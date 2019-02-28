@@ -105,7 +105,7 @@
                                     <div class="col-lg-7 col-md-7 col-sm-6 col-xs-5">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" id="id_pendaftaran" name="id_pendaftaran" class="form-control" value="<?php echo $_SESSION['id_pengunjung']; ?>" placeholder="ID Pengunjung">
+                                                <input type="text" id="id_pendaftaran" name="id_pendaftaran" class="form-control" value="<?php echo $_SESSION['id_pengunjung']; ?>" placeholder="ID Pengunjung" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -153,7 +153,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" id="nama_layanan" name="nama_layanan" value="<?php echo $fet['nama_layanan']; ?>" class="form-control" placeholder="">
+                                                <input type="text" id="nama_layanan" name="nama_layanan" value="<?php echo $fet['nama_layanan']; ?>" class="form-control" placeholder="" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -202,7 +202,7 @@
                                     <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="id_pendaftaran" id="id_pendaftaran" class="form-control" value="<?php echo $_SESSION['id_pengunjung']; ?>" placeholder="ID Pendaftaran" readonly>
+                                                <input type="text" name="id_pendaftaran" id="id_password" class="form-control" value="<?php echo $_SESSION['id_pengunjung']; ?>" placeholder="ID Pendaftaran" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -241,49 +241,59 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Start of Tawk.to Script-->
+                <!--
+                <script type="text/javascript">
+                    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                        (function(){
+                            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                            s1.async=true;
+                            s1.src='https://embed.tawk.to/5c7740cfa726ff2eea59d217/default';
+                            s1.charset='UTF-8';
+                            s1.setAttribute('crossorigin','*');
+                            s0.parentNode.insertBefore(s1,s0);
+                    })();
+                </script> -->
+                <!--End of Tawk.to Script-->
+                
                 <div class="panel panel-chat">
                     <div class="panel-heading">
                         <a href="#" class="chatMinimize" onclick="return false"><span>Chat with Admin CS</span></a>
                         <a href="#" class="chatMinimize" onclick="return false"><i class="glyphicon glyphicon-remove"></i></a>
                         <div class="clearFix"></div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body" id="chat_history">
+                        <?php
+                            $select = mysqli_query($koneksi, "SELECT * FROM chat_system WHERE username = '".$_SESSION['id_pengunjung']."' OR receiver = '".$_SESSION['id_pengunjung']."'");
+                            while($chat = mysqli_fetch_array($select)) {
+                                if($chat['username'] == $_SESSION['id_pengunjung']) {
+                        ?>
                         <div class="messageMe">
                         <img src="../report/ICON/pengunjung.png" alt=""/>
-                            <span>asdasdssadasdasdassssssssssssssssssssssssssssssssssssssssssdasdasd</span>
+                            <span><?php echo $chat['message']; ?></span>
                             <div class="clearFix"></div>
                         </div>
+                        <?php
+                        }
+                        else {
+                        ?>
                         <div class="messageHer">
                             <img src="../report/ICON/cs.jpg" alt=""/>
-                            <span>asdasdsassssssssssssssssssssssssssssssssssssssss</span>
+                            <span><?php echo $chat['message']; ?></span>
                             <div class="clearFix"></div>
                         </div>
-                        <div class="messageMe">
-                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
-                            <span>asdasdssadasdasdassssssssssssssssssssssssssssssssssssssssssdasdasd</span>
-                            <div class="clearFix"></div>
-                        </div>
-                        <div class="messageHer">
-                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
-                            <span>asdasdsassssssssssssssssssssssssssssssssssssssss</span>
-                            <div class="clearFix"></div>
-                        </div>
-                        <div class="messageMe">
-                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
-                            <span>asdasdssadasdasdassssssssssssssssssssssssssssssssssssssssssdasdasd</span>
-                            <div class="clearFix"></div>
-                        </div>
-                        <div class="messageHer">
-                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" alt=""/>
-                            <span>asdasdsassssssssssssssssssssssssssssssssssssssss</span>
-                            <div class="clearFix"></div>
-                        </div>
-                        <div class="clearFix"></div>
+                        <?php
+                        }
+                    }
+                    ?>
                     </div>
                     <div class="panel-footer">
-                        <textarea name="textMessage" cols="0" rows="0"></textarea>
+                        <div class="input-group">
+                            <textarea name="textMessage" id="textChat" cols="0" rows="0"></textarea>
+                            <button type="button" id="sendChat" class="btn btn-primary btn-block">Send</button>
+                        </div>
                     </div>
+                    
                 </div>
 
             </div>

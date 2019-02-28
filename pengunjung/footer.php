@@ -44,11 +44,42 @@
     <script src="../js/demo.js"></script>
     <script src="../chat/chat.js"></script>
     <script>
+        reloadData = function() {
+            var id_user = "<?php echo $_SESSION['id_pengunjung']; ?>";
+            $.ajax({
+                url: "ajax.php",
+                type: "POST",
+                data: {id_chat: id_user},
+                success: function(result){
+                    $("#chat_history").html("");
+                    $("#chat_history").html(result); //takes the content of your url and throws it into div1
+                }
+            });
+        }
+        window.setInterval(reloadData, 10000); //every 10 seconds
+        
+        $('#sendChat').on('click', function(){
+            var id_user = "<?php echo $_SESSION['id_pengunjung']; ?>";
+            var txt = $('#textChat').val();
+            if(txt != "") {
+                $.ajax({
+                    url: "ajax.php",
+                    type: "POST",
+                    data: {id: id_user, text: txt},
+                    success:function(result){
+                        //console.log(result);
+                        $("#chat_history").html("");
+                        $("#chat_history").html(result);
+                        $("#textChat").val("");
+                    }
+                });
+            }
+        });
         $('#changePassword').on('click', function (event) {
             $('#myModal').modal('show');
         });
         $('#btnUpdate').on('click', function (event) {
-            var var_id = $('#id_pendaftaran').val();
+            var var_id = $('#id_password').val();
             var var_lama = $('#pass_lama').val();
             var var_baru = $('#pass_baru').val();
             if (var_lama != "" && var_baru != ""){

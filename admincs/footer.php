@@ -70,6 +70,55 @@
         });
     </script>
     <script>
+        // autoreload chat
+        reloadData = function() {
+            var id_user = "<?php echo $_SESSION['id_pegawai']; ?>";
+            $.ajax({
+                url: "ajax-message.php",
+                type: "POST",
+                data: {id_list: id_user},
+                success: function(result){
+                    $("#chat_list").html("");
+                    $("#chat_list").html(result); //takes the content of your url and throws it into div1
+                }
+            });
+        }
+        window.setInterval(reloadData, 10000); //every 10 seconds
+        // chat_list on click
+        $('.chat_list').on('click', function(){
+            var chatValue = (this).getAttribute('data-chat');
+            $.ajax({
+                url: "ajax-message.php",
+                type: "POST",
+                data: {id_chat: chatValue},
+                success:function(result){
+                    //console.log(result);
+                    $("#chat_history").html("");
+                    $("#chat_history").html(result);
+                }
+            });
+            alert(chatValue);
+        });
+        // send chat
+        $('#sendChat').on('click', function(){
+            var id_user = "<?php echo $_SESSION['id_pegawai']; ?>";
+            var txt = $('#textChat').val();
+            if(txt != "") {
+                $.ajax({
+                    url: "ajax-message.php",
+                    type: "POST",
+                    data: {id: id_user, text: txt},
+                    success:function(result){
+                        //console.log(result);
+                        $("#chat_history").html("");
+                        $("#chat_history").html(result);
+                        $("#textChat").val("");
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
     $('.cekbutton').click(function(e){
         var id = $('#id_pendaftaran').val();
         e.preventDefault(); 

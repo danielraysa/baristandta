@@ -72,7 +72,7 @@
     background: #FFF;
     min-height: 50px;
     max-width: 280px;
-    height: 50px;
+    
     width: 280px;
     word-break: break-all;
 }
@@ -94,7 +94,7 @@
     background: #FFF;
     min-height: 50px;
     max-width: 280px;
-    height: 50px;
+    /*height: 50px;*/
     width: 280px;
     word-break: break-all;
 }
@@ -103,8 +103,8 @@
     padding: 0;
     margin: 0;
     border: 1px solid #b2b2b2;
-    max-height: 75px;
-    height: 75px;
+    max-height: 80px;
+    height: 80px;
 }
 
 .panel.panel-chat .panel-footer textarea {

@@ -1,4 +1,6 @@
 $(function () {
+    $('.panel.panel-chat > .panel-body').hide();
+    $('.panel.panel-chat > .panel-footer').hide();
     $(".panel.panel-chat > .panel-heading > .chatMinimize").click(function () {
         if ($(this).parent().parent().hasClass('mini')) {
             $(this).parent().parent().removeClass('mini').addClass('normal');

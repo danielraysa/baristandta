@@ -253,6 +253,13 @@
                     </div>
                 </div>
             </div>
+
+            <script type="text/javascript">
+            Tawk_API = Tawk_API || {};
+                Tawk_API.onLoad = function(){
+                    //place your code here
+                };
+            </script>
         </div>
     </section>
 

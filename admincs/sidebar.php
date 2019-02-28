@@ -65,6 +65,23 @@
                         </a>
                     </li>
                     <?php
+                    if ($filename == 'message.php') {
+                        ?>
+                    <li class="active">
+                    <?php
+                    }
+                    else {
+                    ?>
+                    <li class="">
+                    <?php
+                    }
+                    ?>
+                        <a href="message.php">
+                            <i class="material-icons">message</i>
+                            <span>Pesan</span>
+                        </a>
+                    </li>
+                    <?php
                     if ($filename == 'index.2.php') {
                         ?>
                     <li class="active">
