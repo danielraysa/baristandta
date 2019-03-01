@@ -10,6 +10,6 @@
     </div>
     <div class="modal-footer">
         <button type="submit" name="cari_tanggal" class="btn btn-warning">Filter</button>
-        <button type="reset" class="btn btn-danger">Batal</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
     </div>
 </form>   

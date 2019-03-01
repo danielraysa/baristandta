@@ -68,7 +68,8 @@
                             $proceed = true;
                             $get_last = mysqli_query($koneksi, "SELECT * FROM pendaftaran WHERE DATE(rekomendasi_datang) = '".$date_rec."' ORDER BY rekomendasi_datang DESC LIMIT 1"); 
                             if (mysqli_num_rows($get_last) == 0) {
-                                date_time_set($date_rec, 8, 0, 0);
+                                $tempdate = strtotime($date_rec." 08:00:00");
+                                $date_rec = date('Y-m-d H:i:s', $tempdate);
                             }
                             else {
                                 $fetch = mysqli_fetch_array($get_last);
