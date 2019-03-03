@@ -31,7 +31,7 @@
       <input type="text" class="fadeIn second" value="<?php echo $_SESSION['temp_id']; ?>" readonly>
       <br>
       Come back again at
-      <input type="text" class="fadeIn second" name="username" value="<?php echo strftime("%d %B %Y %T", strtotime($_SESSION['temp_date'])); ?>" readonly>
+      <input type="text" class="fadeIn second" name="username" value="<?php echo strftime("%d %B %Y %T", strtotime($_SESSION['temp_date']))." - ".$_SESSION['duration']; ?>" readonly>
       <BR>
       <!--<input type="submit" class="fadeIn fourth" name="login" value="Return">-->
       <a href="download.php" type="button" class="fadeIn third">Download Data Pendaftaran</a>

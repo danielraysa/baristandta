@@ -1,5 +1,5 @@
 <?php
-
+setlocale (LC_TIME, 'INDONESIAN');
 include "../connection.php";
 
 $q = $_GET['id'];
@@ -12,7 +12,7 @@ if (mysqli_num_rows($query) == 1) {
     $nama = $row['nama_produk'];
     $jenis = $row['jenis_produk'];
     $asal = $row['asal_perusahaan'];
-    $date = $row['rekomendasi_datang'];
+    $date = strftime("%d %B %Y %T", strtotime($row['rekomendasi_datang']));
     //$newdate = date('Y-m-d', strtotime("$date +7 day"));
     //echo date('M d, Y', $date);
     $myObj = array('hasil' => true, 'nama' => $nama, 'jenis' => $jenis, 'asal' => $asal, 'tanggal' => $date);

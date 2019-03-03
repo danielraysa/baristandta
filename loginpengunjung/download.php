@@ -18,11 +18,12 @@ $query = mysqli_query($koneksi, $_SESSION['temp_query']);
 $row = mysqli_fetch_array($query);
 
 $date = strftime("%d %B %Y %T", strtotime($_SESSION['temp_date']));
+$date2 = strftime("%T", strtotime($_SESSION['temp_date']." +5 minutes"));
 $tanggaldaftar = strftime("%d %B %Y", strtotime($row['tanggal_pendaftaran']));
 $pdf->SetFont('Times','',13);
 $pdf->Text(80, 60, $tanggaldaftar);
 $pdf->SetFont('Times','B',13);
-$pdf->Text(80, 68, $date);
+$pdf->Text(80, 68, $date." - ".$date2);
 
 $pdf->SetFont('Times','',12);
 $pdf->SetXY(34,85);

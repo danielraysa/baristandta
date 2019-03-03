@@ -58,11 +58,14 @@
                     //algoritma
                     $proceed = false;
                     $date_rec = date('Y-m-d', strtotime("+1 days"));
+                    $a = 2;
                     while(!$proceed) {
                         //$get_count = mysqli_query($koneksi, "SELECT * FROM mock_date WHERE DATE(tanggal) = '".$date_rec."'"); 
                         $get_count = mysqli_query($koneksi, "SELECT * FROM pendaftaran WHERE DATE(rekomendasi_datang) = '".$date_rec."'"); 
-                        if (mysqli_num_rows($get_count) >= 90) {
-                            $date_rec = date('Y-m-d', strtotime("+1 days"));
+                        $num_rows = mysqli_num_rows($get_count);
+                        if ($num_rows >= 90) {
+                            $date_rec = date('Y-m-d', strtotime("+".$a." days"));
+                            $a++;
                         }
                         else {
                             $proceed = true;
@@ -83,6 +86,9 @@
                     $query1 = mysqli_query($koneksi, "INSERT INTO pengunjung (id_pengunjung, id_password, asal_perusahaan) VALUES ('".$random_string."', '".$random_password."', '".$namaperusahaan."')");
                     $_SESSION['temp_id'] = $random_string;
                     $_SESSION['temp_date'] = $date_rec;
+                    $temp_dr = strtotime($date_rec." +5 minutes");
+                    $duration = date('H:i:s', $temp_dr);
+                    $_SESSION['duration'] = $duration;
                     $_SESSION['temp_query'] = "SELECT p.id_pendaftaran, p.nama_produk, p.jenis_produk, p.rekomendasi_datang, p.tanggal_pendaftaran, p2.asal_perusahaan FROM pendaftaran p JOIN pengunjung p2 ON p.id_pendaftaran = p2.id_pengunjung WHERE p.id_pendaftaran = '".$random_string."'";
                     header("location: success.php");
                 }

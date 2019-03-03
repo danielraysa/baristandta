@@ -78,7 +78,31 @@ $fet = mysqli_fetch_array($qu);
         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
             <div class="form-group">
                 <select name="status_sertifikasi" id="status_tahapan" class="bootstrap-select form-control show-tick">
+                <?php
+                $status = $fet['status'];
+                if($status == "Tahap 1") {
+                    ?>
                     <option value="Tahap 1">Tahap 1 - Pengumpulan Uji Produk</option>
+                    <?php
+                    if ($fet['id_layanan'] == "LYN001") {
+                    ?>
+                    <option value="Tahap 2">Tahap 2 - Laboratorium Kimia dan Lingkungan</option>
+                    <option value="Tahap 3" disabled>Tahap 3 - Laboratorium Pengujian Mutu</option>
+                    <?php
+                    }
+                    if ($fet['id_layanan'] == "LYN002") {
+                    ?>
+                    <option value="Tahap 2">Tahap 2 - Laboratorium Teknis Pengujian dan Kalibrasi</option>
+                    <option value="Tahap 3" disabled>Tahap 3 - Laboratorium Fisika dan Lingkungan</option>
+                    <?php
+                    }
+                    ?>
+                    <option value="Tahap 4" disabled>Tahap 4 - Keputusan Sertifikasi</option>
+                    <?php
+                }
+                if($status == "Tahap 2") {
+                    ?>
+                    <option value="Tahap 1" disabled>Tahap 1 - Pengumpulan Uji Produk</option>
                     <?php
                     if ($fet['id_layanan'] == "LYN001") {
                     ?>
@@ -93,14 +117,53 @@ $fet = mysqli_fetch_array($qu);
                     <?php
                     }
                     ?>
+                    <option value="Tahap 4" disabled>Tahap 4 - Keputusan Sertifikasi</option>
+                    <?php
+                }
+                if($status == "Tahap 3") {
+                    ?>
+                    <option value="Tahap 1" disabled>Tahap 1 - Pengumpulan Uji Produk</option>
+                    <?php
+                    if ($fet['id_layanan'] == "LYN001") {
+                    ?>
+                    <option value="Tahap 2" disabled>Tahap 2 - Laboratorium Kimia dan Lingkungan</option>
+                    <option value="Tahap 3">Tahap 3 - Laboratorium Pengujian Mutu</option>
+                    <?php
+                    }
+                    if ($fet['id_layanan'] == "LYN002") {
+                    ?>
+                    <option value="Tahap 2" disabled>Tahap 2 - Laboratorium Teknis Pengujian dan Kalibrasi</option>
+                    <option value="Tahap 3">Tahap 3 - Laboratorium Fisika dan Lingkungan</option>
+                    <?php
+                    }
+                    ?>
                     <option value="Tahap 4">Tahap 4 - Keputusan Sertifikasi</option>
+                    <?php
+                }
+                ?>
                 </select>
             </div>
         </div>
     </div>
     <script>
-    $('#status_tahapan').val('<?php echo $fet['status']; ?>');
-    $('#status_tahapan').selectpicker();
+    var variable = "<?php echo $fet['status']; ?>";
+    $('#status_tahapan').val(variable);
+    //alert($("#status_tahapan")[0].selectedIndex);
+    if(variable == "Tahap 1") {
+        $("#status_tahapan option[value='Tahap 3']").prop("disabled","disabled"); 
+        $("#status_tahapan option[value='Tahap 4']").prop("disabled","disabled");
+        $('#status_tahapan').selectpicker('refresh');
+    }
+    if(variable == "Tahap 2") {
+        $("#status_tahapan option[value='Tahap 1']").prop("disabled","disabled");
+        $("#status_tahapan option[value='Tahap 4']").prop("disabled","disabled");
+        $('#status_tahapan').selectpicker('refresh');
+    }
+    if(variable == "Tahap 3") {
+        $("#status_tahapan option[value='Tahap 1']").prop("disabled","disabled");
+        $("#status_tahapan option[value='Tahap 2']").prop("disabled","disabled");
+        $('#status_tahapan').selectpicker('refresh');
+    }
     </script>
     
 </div>

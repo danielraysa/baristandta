@@ -121,6 +121,21 @@
         });
     </script>
     <script>
+    /*
+    function formatDate(date) {
+        var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+        ];
+
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
+
+        return day + ' ' + monthNames[monthIndex] + ' ' + year;
+    } */
     $('.cekbutton').click(function(e){
         var id = $('#id_pendaftaran').val();
         e.preventDefault(); 
